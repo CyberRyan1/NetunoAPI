@@ -1,0 +1,4 @@
+name: NetunoAPI
+version: '${project.version}'
+main: com.github.cyberryan1.netunoapi.NetunoApi
+api-version: 1.18
