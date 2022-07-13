@@ -10,7 +10,8 @@ import java.util.UUID;
 
 public class ANetunoPunishment extends ANetunoPunishmentData {
 
-    private static final List<PunishmentType> punsNoTime = List.of( PunishmentType.WARN, PunishmentType.KICK, PunishmentType.UNMUTE, PunishmentType.UNBAN, PunishmentType.UNIPMUTE, PunishmentType.UNIPBAN );
+    public static final List<PunishmentType> PUNS_NO_LENGTH = List.of( PunishmentType.WARN, PunishmentType.KICK,
+            PunishmentType.UNMUTE, PunishmentType.UNBAN, PunishmentType.UNIPMUTE, PunishmentType.UNIPBAN );
 
     public ANetunoPunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, ArrayList<String> altsPunished ) {
         super( id, punishmentType, playerUuid, staffUuid, length, timestamp, reason, altsPunished );
@@ -19,7 +20,7 @@ public class ANetunoPunishment extends ANetunoPunishmentData {
     public ANetunoPunishment() {}
 
     public boolean isActive() {
-        if ( punsNoTime.contains( super.punishmentType ) ) { return false; }
+        if ( PUNS_NO_LENGTH.contains( super.punishmentType ) ) { return false; }
         return ( TimeUtils.getCurrentTimestamp() - super.timestamp ) < super.length;
     }
 
