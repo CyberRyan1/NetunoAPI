@@ -200,4 +200,29 @@ class TimeUtilsTest {
     void getFormattedLengthFromTimestampLengthJ() {
         assertEquals( TimeUtils.getFormattedLengthFromTimestampLength( 2419200L ), "4 weeks" );
     }
+
+    @Test
+    void getFormattedLengthFromTimestampLengthK() {
+        assertEquals( TimeUtils.getFormattedLengthFromTimestampLength( 3663 ), "1 hour 1 minute 3 seconds" );
+    }
+
+    @Test
+    void getFormattedLengthFromTimestampLengthL() {
+        assertEquals( TimeUtils.getFormattedLengthFromTimestampLength( 7209 ), "2 hours 9 seconds" );
+    }
+
+    @Test
+    void getFormattedLengthFromTimestampLengthM() {
+        assertEquals( TimeUtils.getFormattedLengthFromTimestampLength( 2419265L ), "4 weeks 1 minute 5 seconds" );
+    }
+
+    @Test
+    void getFormattedLengthFromTimestampLengthN() {
+        assertEquals( TimeUtils.getFormattedLengthFromTimestampLength( 694861 ), "1 week 1 day 1 hour 1 minute 1 second" );
+    }
+
+    @Test
+    void getFormattedLengthFromTimestampLengthO() {
+        assertEquals( TimeUtils.getFormattedLengthFromTimestampLength( 785161 ), "1 week 2 days 2 hours 6 minutes 1 second" );
+    }
 }
