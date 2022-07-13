@@ -1,6 +1,7 @@
 package com.github.cyberryan1.netunoapi.utils;
 
 import com.github.cyberryan1.netunoapi.helpers.ANetunoPunishment;
+import com.github.cyberryan1.netunoapi.helpers.PunishmentType;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,8 +19,9 @@ public class PunishmentUtils {
                 .collect( Collectors.toList() );
     }
 
-    public static ANetunoPunishment getHighestActive( List<ANetunoPunishment> punishments ) {
+    public static ANetunoPunishment getHighestActive( List<ANetunoPunishment> punishments, PunishmentType type ) {
         return punishments.stream()
+                .filter( ( p ) -> p.getPunishmentType() == type )
                 .filter( ANetunoPunishment::isActive )
                 .max( ( a, b ) -> ( int ) ( getTimestampLengthRemaining( a ) - getTimestampLengthRemaining( b ) ) )
                 .orElse( null );
