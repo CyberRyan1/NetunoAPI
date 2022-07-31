@@ -14,8 +14,11 @@ public class ApiConnection {
 
     private static Connection conn = null;
     private static JavaPlugin plugin = null;
+    private static boolean isSqlite = false;
+    private static boolean isSql = false;
 
     public static void initializeSql( JavaPlugin pl, String host, int port, String database, String username, String password ) {
+        isSql = true;
         plugin = pl;
         plugin.getLogger().log( Level.INFO, "Initializing SQL..." );
 
@@ -55,6 +58,7 @@ public class ApiConnection {
     }
 
     public static void initializeSqlite( JavaPlugin pl ) {
+        isSqlite = true;
         plugin = pl;
         plugin.getLogger().log( Level.INFO, "Initializing SQLite..." );
         String databaseName = plugin.getConfig().getString( "SQLite.Filename", "database" );
@@ -109,5 +113,13 @@ public class ApiConnection {
             throw new RuntimeException( e );
         }
         plugin.getLogger().log( Level.INFO, "Successfully closed the database connection" );
+    }
+
+    public static boolean isSqlite() {
+        return isSqlite;
+    }
+
+    public static boolean isSql() {
+        return isSql;
     }
 }
