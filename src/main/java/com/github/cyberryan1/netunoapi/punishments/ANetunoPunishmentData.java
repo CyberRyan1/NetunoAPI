@@ -3,20 +3,20 @@ package com.github.cyberryan1.netunoapi.punishments;
 import org.bukkit.OfflinePlayer;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class ANetunoPunishmentData implements Serializable {
 
-    protected int id;
-    protected PunishmentType punishmentType;
-    protected String playerUuid;
-    protected String staffUuid;
-    protected long length;
-    protected long timestamp;
-    protected String reason;
-    protected ArrayList<String> altsPunished;
+    protected int id = -1;
+    protected PunishmentType punishmentType = null;
+    protected String playerUuid = null;
+    protected String staffUuid = null;
+    protected long length = -1;
+    protected long timestamp = -1;
+    protected String reason = null;
+    protected boolean guiPun = false;
+    protected int referencePunId = -1;
 
-    public ANetunoPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, ArrayList<String> altsPunished ) {
+    public ANetunoPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId ) {
         this.id = id;
         this.punishmentType = punishmentType;
         this.playerUuid = playerUuid;
@@ -24,7 +24,8 @@ public class ANetunoPunishmentData implements Serializable {
         this.length = length;
         this.timestamp = timestamp;
         this.reason = reason;
-        this.altsPunished = altsPunished;
+        this.guiPun = guiPun;
+        this.referencePunId = referencePunId;
     }
 
     public ANetunoPunishmentData() {}
@@ -57,8 +58,12 @@ public class ANetunoPunishmentData implements Serializable {
         return reason;
     }
 
-    public ArrayList<String> getAltsPunished() {
-        return altsPunished;
+    public boolean isGuiPun() {
+        return guiPun;
+    }
+
+    public int getReferencePunId() {
+        return referencePunId;
     }
 
     public void setId( int id ) {
@@ -97,8 +102,12 @@ public class ANetunoPunishmentData implements Serializable {
         this.reason = reason;
     }
 
-    public void setAltsPunished( ArrayList<String> altsPunished ) {
-        this.altsPunished = altsPunished;
+    public void setGuiPun( boolean guiPun ) {
+        this.guiPun = guiPun;
+    }
+
+    public void setReferencePunId( int referencePunId ) {
+        this.referencePunId = referencePunId;
     }
 
     @Override
@@ -110,7 +119,8 @@ public class ANetunoPunishmentData implements Serializable {
                 ", length=" + length +
                 ", timestamp=" + timestamp +
                 ", reason=" + reason +
-                ", altsString=" + altsPunished +
+                ", guiPun=" + guiPun +
+                ", referencePunId=" + referencePunId +
                 '}';
     }
 }
