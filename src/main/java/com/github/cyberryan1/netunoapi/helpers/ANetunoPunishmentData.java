@@ -93,8 +93,16 @@ public class ANetunoPunishmentData implements Serializable {
         this.playerUuid = playerUuid;
     }
 
+    public void setPlayer( OfflinePlayer player ) {
+        this.playerUuid = player.getUniqueId().toString();
+    }
+
     public void setStaffUuid( String staffUuid ) {
         this.staffUuid = staffUuid;
+    }
+
+    public void setStaff( OfflinePlayer staff ) {
+        this.staffUuid = staff.getUniqueId().toString();
     }
 
     public void setLength( long length ) {
