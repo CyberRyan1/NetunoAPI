@@ -13,25 +13,6 @@ public class ANetunoPunishment extends ANetunoPunishmentData {
         super( id, punishmentType, playerUuid, staffUuid, length, timestamp, reason, altsPunished );
     }
 
-    public ANetunoPunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason ) {
-        super( id, punishmentType, playerUuid, staffUuid, length, timestamp, reason );
-    }
-
-    public ANetunoPunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long timestamp, String reason ) {
-        super( id, punishmentType, playerUuid, staffUuid, timestamp, reason );
-    }
-
-    public ANetunoPunishment( int id, PunishmentType punishmentType, OfflinePlayer player, OfflinePlayer staff, long length, long timestamp, String reason, ArrayList<String> altsPunished ) {
-        super( id, punishmentType, player, staff, length, timestamp, reason, altsPunished );
-    }
-
-    public ANetunoPunishment( int id, PunishmentType punishmentType, OfflinePlayer player, OfflinePlayer staff, long length, long timestamp, String reason ) {
-        super( id, punishmentType, player, staff, length, timestamp, reason );
-    }
-    public ANetunoPunishment( int id, PunishmentType punishmentType, OfflinePlayer player, OfflinePlayer staff, long timestamp, String reason ) {
-        super( id, punishmentType, player, staff, timestamp, reason );
-    }
-
     public ANetunoPunishment() {}
 
     public boolean isActive() {

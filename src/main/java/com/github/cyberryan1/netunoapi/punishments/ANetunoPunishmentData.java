@@ -27,26 +27,6 @@ public class ANetunoPunishmentData implements Serializable {
         this.altsPunished = altsPunished;
     }
 
-    public ANetunoPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason ) {
-        this( id, punishmentType, playerUuid, staffUuid, length, timestamp, reason, null );
-    }
-
-    public ANetunoPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long timestamp, String reason ) {
-        this( id, punishmentType, playerUuid, staffUuid, -1, timestamp, reason, null );
-    }
-
-    public ANetunoPunishmentData( int id, PunishmentType punishmentType, OfflinePlayer player, OfflinePlayer staff, long length, long timestamp, String reason, ArrayList<String> altsPunished ) {
-        this( id, punishmentType, player.getUniqueId().toString(), staff.getUniqueId().toString(), length, timestamp, reason, altsPunished );
-    }
-
-    public ANetunoPunishmentData( int id, PunishmentType punishmentType, OfflinePlayer player, OfflinePlayer staff, long length, long timestamp, String reason ) {
-        this( id, punishmentType, player.getUniqueId().toString(), staff.getUniqueId().toString(), length, timestamp, reason, null );
-    }
-
-    public ANetunoPunishmentData( int id, PunishmentType punishmentType, OfflinePlayer player, OfflinePlayer staff, long timestamp, String reason ) {
-        this( id, punishmentType, player.getUniqueId().toString(), staff.getUniqueId().toString(), -1, timestamp, reason, null );
-    }
-
     public ANetunoPunishmentData() {}
 
     public int getId() {
