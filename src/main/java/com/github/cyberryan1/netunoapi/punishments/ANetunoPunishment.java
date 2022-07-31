@@ -1,4 +1,4 @@
-package com.github.cyberryan1.netunoapi.helpers;
+package com.github.cyberryan1.netunoapi.punishments;
 
 import com.github.cyberryan1.netunoapi.utils.TimeUtils;
 import org.bukkit.Bukkit;

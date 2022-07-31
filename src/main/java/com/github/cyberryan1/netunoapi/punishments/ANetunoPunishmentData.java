@@ -1,4 +1,4 @@
-package com.github.cyberryan1.netunoapi.helpers;
+package com.github.cyberryan1.netunoapi.punishments;
 
 import org.bukkit.OfflinePlayer;
 
