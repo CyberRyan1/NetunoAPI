@@ -1,5 +1,7 @@
 package com.github.cyberryan1.netunoapi.helpers;
 
+import org.bukkit.OfflinePlayer;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -23,6 +25,26 @@ public class ANetunoPunishmentData implements Serializable {
         this.timestamp = timestamp;
         this.reason = reason;
         this.altsPunished = altsPunished;
+    }
+
+    public ANetunoPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason ) {
+        this( id, punishmentType, playerUuid, staffUuid, length, timestamp, reason, null );
+    }
+
+    public ANetunoPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long timestamp, String reason ) {
+        this( id, punishmentType, playerUuid, staffUuid, -1, timestamp, reason, null );
+    }
+
+    public ANetunoPunishmentData( int id, PunishmentType punishmentType, OfflinePlayer player, OfflinePlayer staff, long length, long timestamp, String reason, ArrayList<String> altsPunished ) {
+        this( id, punishmentType, player.getUniqueId().toString(), staff.getUniqueId().toString(), length, timestamp, reason, altsPunished );
+    }
+
+    public ANetunoPunishmentData( int id, PunishmentType punishmentType, OfflinePlayer player, OfflinePlayer staff, long length, long timestamp, String reason ) {
+        this( id, punishmentType, player.getUniqueId().toString(), staff.getUniqueId().toString(), length, timestamp, reason, null );
+    }
+
+    public ANetunoPunishmentData( int id, PunishmentType punishmentType, OfflinePlayer player, OfflinePlayer staff, long timestamp, String reason ) {
+        this( id, punishmentType, player.getUniqueId().toString(), staff.getUniqueId().toString(), -1, timestamp, reason, null );
     }
 
     public ANetunoPunishmentData() {}
@@ -59,7 +81,7 @@ public class ANetunoPunishmentData implements Serializable {
         return altsPunished;
     }
 
-    public void setId(int id) {
+    public void setId( int id ) {
         this.id = id;
     }
 
