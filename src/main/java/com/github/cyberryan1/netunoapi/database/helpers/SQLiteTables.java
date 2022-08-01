@@ -16,10 +16,6 @@ public enum SQLiteTables {
             "`type` STRING NOT NULL );"
     ),
 
-    NO_SIGN_NOTIFS_TABLE( "CREATE TABLE IF NOT EXISTS nosignnotifs (" +
-            "`player` STRING PRIMARY KEY );"
-    ),
-
     REPORTS_TABLE( "CREATE TABLE IF NOT EXISTS reports (" +
             "`id` INTEGER PRIMARY KEY AUTOINCREMENT," +
             "`target` STRING NOT NULL," +

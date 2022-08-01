@@ -16,10 +16,6 @@ public enum SQLTables {
             "type VARCHAR(6) NOT NULL );"
     ),
 
-    NO_SIGN_NOTIFS_TABLE( "CREATE TABLE IF NOT EXISTS nosignnotifs (" +
-            "player VARCHAR(42) PRIMARY KEY );"
-    ),
-
     REPORTS_TABLE( "CREATE TABLE IF NOT EXISTS reports (" +
             "id INTEGER PRIMARY KEY AUTO_INCREMENT," +
             "target VARCHAR(42) STRING NOT NULL," +
