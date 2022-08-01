@@ -15,7 +15,7 @@ public enum SQLTables {
             "player STRING NOT NULL );"
     ),
 
-    IP_TABLE( "CREATE TABLE IF NOT EXISTS ip (" +
+    ALTS_TABLE( "CREATE TABLE IF NOT EXISTS alts (" +
             "group INTEGER," +
             "player VARCHAR(42) NOT NULL," +
             "ip VARCHAR(20) NOT NULL );"
