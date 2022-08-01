@@ -335,14 +335,14 @@ public class PunishmentsDatabase {
      * @throws ClassIncompleteException If the punishment is incomplete
      */
     private void checkPunishment( ANetunoPunishment pun, boolean shouldBeValidId ) {
-        if ( shouldBeValidId && pun.getId() <= 0 ) { throw new ClassIncompleteException( "Punishment ID must be greater than zero" ); }
-        if ( shouldBeValidId == false && pun.getId() > 0 ) { throw new ClassIncompleteException( "Punishment ID must be less than or equal to zero" ); }
-        if ( pun.getPunishmentType() == null ) { throw new ClassIncompleteException( "Punishment type cannot be null" ); }
-        if ( pun.getPlayerUuid() == null ) { throw new ClassIncompleteException( "Player UUID cannot be null" ); }
-        if ( pun.getStaffUuid() == null ) { throw new ClassIncompleteException( "Staff UUID cannot be null" ); }
-        if ( pun.getLength() <= 0 && pun.getPunishmentType().hasNoLength() == false ) { throw new ClassIncompleteException( "Length must be greater than zero seconds" ); }
-        if ( pun.getTimestamp() <= 0 ) { throw new ClassIncompleteException( "Timestamp must be greater than zero" ); }
-        if ( pun.getReason() == null ) { throw new ClassIncompleteException( "Reason cannot be null" ); }
-        if ( pun.getPunishmentType().isIpPunishment() && pun.getReferencePunId() <= 0 ) { throw new ClassIncompleteException( "Reference Punishment ID must be greater than zero for IP punishments" ); }
+        if ( shouldBeValidId && pun.getId() <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment ID must be greater than zero" ); }
+        if ( shouldBeValidId == false && pun.getId() > 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment ID must be less than or equal to zero" ); }
+        if ( pun.getPunishmentType() == null ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment type cannot be null" ); }
+        if ( pun.getPlayerUuid() == null ) { throw new ClassIncompleteException( "Punishment incomplete: Player UUID cannot be null" ); }
+        if ( pun.getStaffUuid() == null ) { throw new ClassIncompleteException( "Punishment incomplete: Staff UUID cannot be null" ); }
+        if ( pun.getLength() <= 0 && pun.getPunishmentType().hasNoLength() == false ) { throw new ClassIncompleteException( "Punishment incomplete: Length must be greater than zero seconds" ); }
+        if ( pun.getTimestamp() <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Timestamp must be greater than zero" ); }
+        if ( pun.getReason() == null ) { throw new ClassIncompleteException( "Punishment incomplete: Reason cannot be null" ); }
+        if ( pun.getPunishmentType().isIpPunishment() && pun.getReferencePunId() <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Reference Punishment ID must be greater than zero for IP punishments" ); }
     }
 }
