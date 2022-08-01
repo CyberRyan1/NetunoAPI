@@ -334,7 +334,7 @@ public class PunishmentsDatabase {
      * @param shouldBeValidId If the punishment id should be above 0 (true) or less than or equal to 0 (false)
      * @throws ClassIncompleteException If the punishment is incomplete
      */
-    private void checkPunishment( ANetunoPunishment pun, boolean shouldBeValidId ) {
+    public void checkPunishment( ANetunoPunishment pun, boolean shouldBeValidId ) {
         if ( shouldBeValidId && pun.getId() <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment ID must be greater than zero" ); }
         if ( shouldBeValidId == false && pun.getId() > 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment ID must be less than or equal to zero" ); }
         if ( pun.getPunishmentType() == null ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment type cannot be null" ); }
