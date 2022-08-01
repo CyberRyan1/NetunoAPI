@@ -17,7 +17,8 @@ public enum SQLTables {
 
     ALTS_TABLE( "CREATE TABLE IF NOT EXISTS alts (" +
             "group INTEGER," +
-            "str VARCHAR(42) NOT NULL );"
+            "item VARCHAR(42) NOT NULL " +
+            "type VARCHAR(6) NOT NULL );"
     ),
 
     NO_SIGN_NOTIFS_TABLE( "CREATE TABLE IF NOT EXISTS nosignnotifs (" +
