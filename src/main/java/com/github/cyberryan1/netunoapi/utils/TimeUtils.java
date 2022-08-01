@@ -2,13 +2,19 @@ package com.github.cyberryan1.netunoapi.utils;
 
 public class TimeUtils {
 
-    // Returns the current timestamp, in seconds
+    /**
+     * @return The current timestamp, in seconds (not milliseconds!)
+     */
     public static long getCurrentTimestamp() {
         return System.currentTimeMillis() / 1000;
     }
 
-    // Converts the unformatted punishment length format into seconds
-    // Example: 1h -> 3600, 1d -> 86400, etc
+    /**
+     * Converts the unformatted punishment length format into seconds. <br>
+     * Example: "1h" -> 3600, "1d" -> 86400, etc
+     * @param unformattedString The unformatted string to convert
+     * @return The length in seconds
+     */
     public static long getTimestampLengthFromUnformattedString( String unformattedString ) {
         // Strings are formatted with only the length and only one unit, for example 1w, 1d, 1h, 1m, 1s
         // The unit is the last character of the string, for example w, d, h, m, s
@@ -26,8 +32,12 @@ public class TimeUtils {
         };
     }
 
-    // Converts the unformatted punishment length format into a formatted length string
-    // Example: 1h -> 1 hour, 3d -> 3 days, etc
+    /**
+     * Converts the unformatted punishment length format into a formatted length string. <br>
+     * Example: "1h" -> "1 hour", "3d" -> "3 days", etc
+     * @param unformattedString The unformatted string to convert
+     * @return The formatted length string
+     */
     public static String getFormattedLengthFromUnformattedLength( String unformattedString ) {
         // Strings are formatted with only the length and only one unit, for example 1w, 1d, 1h, 1m, 1s
         // The unit is the last character of the string, for example w, d, h, m, s
@@ -50,8 +60,12 @@ public class TimeUtils {
         return toReturn;
     }
 
-    // Converts the formatted length string into a timestamp of length
-    // Example: 1 hour -> 3600, 3 days -> 259200, etc
+    /**
+     * Converts the formatted length string into a timestamp of length. <br>
+     * Example: "1 hour" -> 3600, "3 days" -> 259200, etc
+     * @param formattedLength The formatted length string to convert
+     * @return The length in seconds
+     */
     public static long getTimestampLengthFromFormattedLength( String formattedLength ) {
         // Strings are formatted with the length and the unit, for example "1 day", "3 hours", "5 minutes", etc
         // The amount is the number before the unit, for example "1", "3", "5", etc
@@ -72,8 +86,12 @@ public class TimeUtils {
         };
     }
 
-    // Converts the timestamp length into a formatted length string
-    // Example: 3600 -> 1 hour, 259200 -> 3 days, etc
+    /**
+     * Converts the timestamp length into a formatted length string. <br>
+     * Example: 3600 -> "1 hour", 259200 -> "3 days", etc
+     * @param timestampLength The length in seconds to convert
+     * @return The formatted length string
+     */
     public static String getFormattedLengthFromTimestampLength( long timestampLength ) {
         // Timestamp lengths are in seconds
         // Timestamps need to be converted into the correct length string
