@@ -3,7 +3,7 @@ package com.github.cyberryan1.netunoapi.database;
 /**
  * This class is used to manage all the different database instance classes.
  */
-public class ApiDatabase {
+public class NetunoDatabases {
 
     private static AltsDatabase altsDatabase = new AltsDatabase();
     private static PunishmentsDatabase punDatabase = new PunishmentsDatabase();
