@@ -1,5 +1,6 @@
 package com.github.cyberryan1.netunoapi.database;
 
+import com.github.cyberryan1.netunoapi.database.helpers.SQLiteTables;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.bukkit.plugin.java.JavaPlugin;
 

@@ -1,4 +1,4 @@
-package com.github.cyberryan1.netunoapi.database;
+package com.github.cyberryan1.netunoapi.database.helpers;
 
 public enum SQLTables {
 
