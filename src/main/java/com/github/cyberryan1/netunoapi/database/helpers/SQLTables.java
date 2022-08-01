@@ -18,10 +18,8 @@ public enum SQLTables {
 
     REPORTS_TABLE( "CREATE TABLE IF NOT EXISTS reports (" +
             "id INTEGER PRIMARY KEY AUTO_INCREMENT," +
-            "target VARCHAR(42) STRING NOT NULL," +
-            "reporter VARCHAR(42) NOT NULL," +
-            "date TEXT NOT NULL," +
-            "reason TEXT NOT NULL );"
+            "player VARCHAR(42) STRING NOT NULL," +
+            "data BLOB NOT NULL );"
     ),
 
     RANDOM_TABLE( "CREATE TABLE IF NOT EXISTS random (" +
