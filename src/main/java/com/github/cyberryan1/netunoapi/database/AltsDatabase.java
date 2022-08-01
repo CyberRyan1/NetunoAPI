@@ -2,6 +2,8 @@ package com.github.cyberryan1.netunoapi.database;
 
 import com.github.cyberryan1.netunoapi.database.helpers.AltGroup;
 import com.github.cyberryan1.netunoapi.database.helpers.AltSecurityLevel;
+import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.sql.PreparedStatement;
@@ -10,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
@@ -183,6 +186,32 @@ public class AltsDatabase {
             }
             cache.add( group );
         }
+    }
+
+    /**
+     * Returns a list of UUID strings of all alts a player
+     * has logged in the cache, including their own.
+     * @param player The player to get the alts of
+     * @return The alts of the player
+     */
+    public List<String> getAltUuids( OfflinePlayer player ) {
+        return cache.stream()
+                .map( AltGroup::getAltUuids )
+                .filter( altUuids -> altUuids.contains( player.getUniqueId().toString() ) )
+                .findFirst()
+                .orElse( new ArrayList<>() );
+    }
+
+    /**
+     * Returns a list of {@link OfflinePlayer} objects of all
+     * alts a player has logged in the cache, including themselves.
+     * @param player The player to get the alts of
+     * @return The alts of the player
+     */
+    public List<OfflinePlayer> getAlts( OfflinePlayer player ) {
+        return getAltUuids( player ).stream()
+                .map( uuid -> Bukkit.getOfflinePlayer( UUID.fromString( uuid ) ) )
+                .collect( Collectors.toList() );
     }
 
     /**
