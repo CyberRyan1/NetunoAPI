@@ -15,8 +15,9 @@ public class ANetunoPunishmentData implements Serializable {
     protected String reason = null;
     protected boolean guiPun = false;
     protected int referencePunId = -1;
+    protected boolean needsNotifSent = false;
 
-    public ANetunoPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId ) {
+    public ANetunoPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId, boolean needsNotifSent ) {
         this.id = id;
         this.punishmentType = punishmentType;
         this.playerUuid = playerUuid;
@@ -26,6 +27,7 @@ public class ANetunoPunishmentData implements Serializable {
         this.reason = reason;
         this.guiPun = guiPun;
         this.referencePunId = referencePunId;
+        this.needsNotifSent = needsNotifSent;
     }
 
     public ANetunoPunishmentData() {}
@@ -64,6 +66,10 @@ public class ANetunoPunishmentData implements Serializable {
 
     public int getReferencePunId() {
         return referencePunId;
+    }
+
+    public boolean needsNotifSent() {
+        return needsNotifSent;
     }
 
     public void setId( int id ) {
@@ -110,6 +116,10 @@ public class ANetunoPunishmentData implements Serializable {
         this.referencePunId = referencePunId;
     }
 
+    public void setNeedsNotifSent( boolean needsNotifSent ) {
+        this.needsNotifSent = needsNotifSent;
+    }
+
     @Override
     public String toString() {
         return "NetunoPunishmentData{" + "id=" + id +
@@ -121,6 +131,7 @@ public class ANetunoPunishmentData implements Serializable {
                 ", reason=" + reason +
                 ", guiPun=" + guiPun +
                 ", referencePunId=" + referencePunId +
+                ", needsNotifSent=" + needsNotifSent +
                 '}';
     }
 }

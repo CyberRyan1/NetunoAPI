@@ -10,11 +10,6 @@ public enum SQLiteTables {
             "`reference` INTEGER NOT NULL );"
     ),
 
-    NOTIFS_TABLE( "CREATE TABLE IF NOT EXISTS notifs (" +
-            "`punid` INTEGER PRIMARY KEY," +
-            "`player` STRING NOT NULL );"
-    ),
-
     ALTS_TABLE( "CREATE TABLE IF NOT EXISTS alts ("  +
             "`group` INTEGER," +
             "`item` STRING NOT NULL," +

@@ -8,8 +8,8 @@ import java.util.UUID;
 
 public class ANetunoPunishment extends ANetunoPunishmentData {
 
-    public ANetunoPunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId ) {
-        super( id, punishmentType, playerUuid, staffUuid, length, timestamp, reason, guiPun, referencePunId );
+    public ANetunoPunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId, boolean needsNotifSent ) {
+        super( id, punishmentType, playerUuid, staffUuid, length, timestamp, reason, guiPun, referencePunId, needsNotifSent );
     }
 
     public ANetunoPunishment() {}
