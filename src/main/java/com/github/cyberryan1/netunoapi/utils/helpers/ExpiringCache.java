@@ -71,6 +71,16 @@ public class ExpiringCache<T> {
     }
 
     /**
+     * Removes all elements from the cache that satisfy the given predicate
+     * @param predicate The predicate to check with
+     */
+    public void removeAllWhere( Predicate<? super T> predicate ) {
+        cache.keySet().stream()
+                .filter( predicate )
+                .forEach( ( t ) -> cache.remove( t ) );
+    }
+
+    /**
      * Sets the expiration timer of the cache, in seconds.
      * The default is 300 seconds (5 minutes).
      * @param expirationTime The expiration time in seconds
