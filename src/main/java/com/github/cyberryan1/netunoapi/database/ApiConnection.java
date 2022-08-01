@@ -154,4 +154,11 @@ public class ApiConnection {
     public static boolean isSql() {
         return isSql;
     }
+
+    /**
+     * @return The plugin instance
+     */
+    public static JavaPlugin getPlugin() {
+        return plugin;
+    }
 }
