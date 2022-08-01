@@ -17,8 +17,7 @@ public enum SQLiteTables {
 
     ALTS_TABLE( "CREATE TABLE IF NOT EXISTS alts ("  +
             "`group` INTEGER," +
-            "`player` STRING NOT NULL," +
-            "`ip` STRING NOT NULL );"
+            "`str` STRING NOT NULL );"
     ),
 
     NO_SIGN_NOTIFS_TABLE( "CREATE TABLE IF NOT EXISTS nosignnotifs (" +
