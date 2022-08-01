@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 
+/**
+ * This class is used to connect and manage the connection to the database.
+ */
 public class ApiConnection {
 
     private static Connection conn = null;
@@ -17,6 +20,15 @@ public class ApiConnection {
     private static boolean isSqlite = false;
     private static boolean isSql = false;
 
+    /**
+     * Initializes the connection to the SQL database and creates all tables needed.
+     * @param pl The plugin instance
+     * @param host The host of the SQL database
+     * @param port The port of the SQL database
+     * @param database The name of the SQL database
+     * @param username The username of the SQL database
+     * @param password The password of the SQL database
+     */
     public static void initializeSql( JavaPlugin pl, String host, int port, String database, String username, String password ) {
         isSql = true;
         plugin = pl;
@@ -57,6 +69,10 @@ public class ApiConnection {
         plugin.getLogger().log( Level.INFO, "SQL initialization complete" );
     }
 
+    /**
+     * Initializes the connection to the SQLite database and creates all tables needed.
+     * @param pl The plugin instance
+     */
     public static void initializeSqlite( JavaPlugin pl ) {
         isSqlite = true;
         plugin = pl;
@@ -96,14 +112,23 @@ public class ApiConnection {
         plugin.getLogger().log( Level.INFO, "SQLite initialization complete" );
     }
 
+    /**
+     * @return The connection to the database if it is set, null otherwise
+     */
     public static Connection getConnection() {
         return conn;
     }
 
+    /**
+     * @return The connection to the database if it is set, null otherwise
+     */
     public static Connection getConn() {
         return conn;
     }
 
+    /**
+     * Closes the connection to the database
+     */
     public static void closeConnection() {
         plugin.getLogger().log( Level.INFO, "Closing the connection to the database..." );
         try {
@@ -115,10 +140,16 @@ public class ApiConnection {
         plugin.getLogger().log( Level.INFO, "Successfully closed the database connection" );
     }
 
+    /**
+     * @return True if the connection is to a SQLite database, false otherwise
+     */
     public static boolean isSqlite() {
         return isSqlite;
     }
 
+    /**
+     * @return True if the connection is to a SQL database, false otherwise
+     */
     public static boolean isSql() {
         return isSql;
     }
