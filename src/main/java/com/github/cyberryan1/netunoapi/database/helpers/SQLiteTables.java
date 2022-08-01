@@ -15,7 +15,7 @@ public enum SQLiteTables {
             "`player` STRING NOT NULL );"
     ),
 
-    IP_TABLE( "CREATE TABLE IF NOT EXISTS ip ("  +
+    ALTS_TABLE( "CREATE TABLE IF NOT EXISTS alts ("  +
             "`group` INTEGER," +
             "`player` STRING NOT NULL," +
             "`ip` STRING NOT NULL );"
