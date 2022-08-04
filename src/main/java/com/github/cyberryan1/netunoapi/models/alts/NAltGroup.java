@@ -1,6 +1,5 @@
 package com.github.cyberryan1.netunoapi.models.alts;
 
-import com.github.cyberryan1.netunoapi.models.punishments.NPunishment;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
@@ -13,7 +12,6 @@ public class NAltGroup {
     private int groupId = -1;
     private List<String> altUuids = new ArrayList<>();
     private List<String> ipList = new ArrayList<>();
-    private List<NPunishment> activePuns = new ArrayList<>();
 
     public NAltGroup( int groupId, List<String> altUuids, List<String> ipList ) {
         this.groupId = groupId;
@@ -85,10 +83,6 @@ public class NAltGroup {
         return ipList;
     }
 
-    public List<NPunishment> getActivePuns() {
-        return activePuns;
-    }
-
     public void setGroupId( int groupId ) {
         this.groupId = groupId;
     }
@@ -99,9 +93,5 @@ public class NAltGroup {
 
     public void setIpList( List<String> ipList ) {
         this.ipList = ipList;
-    }
-
-    public void setActivePuns( List<NPunishment> activeIppuns ) {
-        this.activePuns = activeIppuns;
     }
 }
