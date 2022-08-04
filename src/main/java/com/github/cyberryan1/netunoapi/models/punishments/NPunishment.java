@@ -82,4 +82,22 @@ public class NPunishment extends NPunishmentData {
         if ( this.reason == null ) { throw new ClassIncompleteException( "Punishment incomplete: Reason cannot be null" ); }
         if ( this.punishmentType.isIpPunishment() && this.referencePunId <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Reference Punishment ID must be greater than zero for IP punishments" ); }
     }
+
+    /**
+     * @return A copy of this punishment
+     */
+    public NPunishment copy() {
+        NPunishment clone = new NPunishment();
+        clone.id = this.id;
+        clone.punishmentType = this.punishmentType;
+        clone.playerUuid = this.playerUuid;
+        clone.staffUuid = this.staffUuid;
+        clone.length = this.length;
+        clone.timestamp = this.timestamp;
+        clone.reason = this.reason;
+        clone.guiPun = this.guiPun;
+        clone.referencePunId = this.referencePunId;
+        clone.needsNotifSent = this.needsNotifSent;
+        return clone;
+    }
 }
