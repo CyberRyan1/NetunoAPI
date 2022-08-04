@@ -1,6 +1,6 @@
 package com.github.cyberryan1.netunoapi.utils;
 
-import com.github.cyberryan1.netunoapi.models.time.NTimeLength;
+import com.github.cyberryan1.netunoapi.models.time.NDuration;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +22,7 @@ public class ExpiringCache<T> {
      * @param key The new entry
      */
     public void add( T key ) {
-        cache.put( key, NTimeLength.getCurrentTimestamp() );
+        cache.put( key, NDuration.getCurrentTimestamp() );
     }
 
     /**
@@ -34,7 +34,7 @@ public class ExpiringCache<T> {
      */
     public boolean isExpired( T key ) {
         if ( cache.containsKey( key ) == false ) { return true; }
-        if ( NTimeLength.getCurrentTimestamp() - cache.get( key ) > expirationTime ) {
+        if ( NDuration.getCurrentTimestamp() - cache.get( key ) > expirationTime ) {
             cache.remove( key );
             return true;
         }
