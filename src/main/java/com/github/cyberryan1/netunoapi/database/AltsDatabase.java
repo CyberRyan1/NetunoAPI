@@ -41,4 +41,12 @@ public interface AltsDatabase {
      * @return The alts of the player
      */
     List<OfflinePlayer> getAlts( OfflinePlayer player );
+
+    /**
+     * Returns the {@link NAltGroup} that contains the given
+     * player UUID.
+     * @param playerUuid The player UUID to get the group of
+     * @return The group of the player
+     */
+    NAltGroup getAltGroup( String playerUuid );
 }
