@@ -9,19 +9,19 @@ import java.util.UUID;
 
 public class NPunishment extends NPunishmentData {
 
-    public NPunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId, boolean needsNotifSent ) {
-        super( id, punishmentType, playerUuid, staffUuid, length, timestamp, reason, guiPun, referencePunId, needsNotifSent );
-    }
-
     public NPunishment() {}
 
     /**
-     * @return true if the punishment is still active, false if
-     * it is not active or if the punishment has no length by default
+     * @return The amount of seconds remaining in the punishment. Returns
+     * 0 if the punishment has no length or if the punishment is not active.
+     * Returns -1 if the punishment length is permanent.
      */
-    public boolean isActive() {
-        if ( super.punishmentType.hasNoLength() ) { return false; }
-        return ( TimeUtils.getCurrentTimestamp() - super.timestamp ) < super.length;
+    public long getLengthRemaining() {
+        if ( super.punishmentType.hasNoLength() || isActive() == false ) { return 0; }
+        if ( super.length == -1 ) { return -1; }
+        long remain = super.length - ( TimeUtils.getCurrentTimestamp() - super.timestamp );
+        if ( remain < 0 ) { return 0; }
+        return remain;
     }
 
     /**
