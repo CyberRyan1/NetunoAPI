@@ -30,6 +30,11 @@ public class NPunishment extends NPunishmentData {
         return new NTimeLength( remain );
     }
 
+    public NTimeLength getTimeLength() {
+        if ( super.length == -1 ) { return new NTimeLength( true ); }
+        return new NTimeLength( super.length );
+    }
+
     /**
      * @return The player as an {@link OfflinePlayer}
      */
