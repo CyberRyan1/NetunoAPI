@@ -1,6 +1,4 @@
-package com.github.cyberryan1.netunoapi.utils.helpers;
-
-import com.github.cyberryan1.netunoapi.utils.TimeUtils;
+package com.github.cyberryan1.netunoapi.utils;
 
 import java.util.HashMap;
 import java.util.List;
