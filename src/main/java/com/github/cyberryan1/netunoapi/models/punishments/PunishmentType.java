@@ -1,4 +1,4 @@
-package com.github.cyberryan1.netunoapi.models.helpers;
+package com.github.cyberryan1.netunoapi.models.punishments;
 
 public enum PunishmentType {
     WARN ( true, false,false ),
