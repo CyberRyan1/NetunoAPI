@@ -1,7 +1,7 @@
 package com.github.cyberryan1.netunoapi.models.punishments;
 
 import com.github.cyberryan1.netunoapi.exceptions.ClassIncompleteException;
-import com.github.cyberryan1.netunoapi.models.time.NTimeLength;
+import com.github.cyberryan1.netunoapi.models.time.NDuration;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
@@ -19,7 +19,7 @@ public class NPunishment extends NPunishmentData {
     public long getSecondsRemaining() {
         if ( super.punishmentType.hasNoLength() || dataIsActive() == false ) { return 0; }
         if ( super.length == -1 ) { return -1; }
-        long remain = super.length - ( NTimeLength.getCurrentTimestamp() - super.timestamp );
+        long remain = super.length - ( NDuration.getCurrentTimestamp() - super.timestamp );
         if ( remain < 0 ) { return 0; }
         return remain;
     }
@@ -36,20 +36,20 @@ public class NPunishment extends NPunishmentData {
 
     /**
      * @return The amount of seconds remaining in the punishment as a
-     * {@link NTimeLength} object.
+     * {@link NDuration} object.
      */
-    public NTimeLength getLengthRemaining() {
+    public NDuration getLengthRemaining() {
         long remain = getSecondsRemaining();
-        if ( remain == -1 ) { return new NTimeLength( true ); }
-        return new NTimeLength( remain );
+        if ( remain == -1 ) { return new NDuration( true ); }
+        return new NDuration( remain );
     }
 
     /**
-     * @return The length of the punishment as a {@link NTimeLength} object.
+     * @return The length of the punishment as a {@link NDuration} object.
      */
-    public NTimeLength getTimeLength() {
-        if ( super.length == -1 ) { return new NTimeLength( true ); }
-        return new NTimeLength( super.length );
+    public NDuration getTimeLength() {
+        if ( super.length == -1 ) { return new NDuration( true ); }
+        return new NDuration( super.length );
     }
 
     /**
