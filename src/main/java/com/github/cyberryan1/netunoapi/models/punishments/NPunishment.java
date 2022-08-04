@@ -1,20 +1,19 @@
-package com.github.cyberryan1.netunoapi.models;
+package com.github.cyberryan1.netunoapi.models.punishments;
 
-import com.github.cyberryan1.netunoapi.models.helpers.PunishmentType;
+import com.github.cyberryan1.netunoapi.exceptions.ClassIncompleteException;
 import com.github.cyberryan1.netunoapi.utils.TimeUtils;
-import com.github.cyberryan1.netunoapi.utils.helpers.ClassIncompleteException;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
 import java.util.UUID;
 
-public class ANetunoPunishment extends ANetunoPunishmentData {
+public class NPunishment extends NPunishmentData {
 
-    public ANetunoPunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId, boolean needsNotifSent ) {
+    public NPunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId, boolean needsNotifSent ) {
         super( id, punishmentType, playerUuid, staffUuid, length, timestamp, reason, guiPun, referencePunId, needsNotifSent );
     }
 
-    public ANetunoPunishment() {}
+    public NPunishment() {}
 
     /**
      * @return true if the punishment is still active, false if
