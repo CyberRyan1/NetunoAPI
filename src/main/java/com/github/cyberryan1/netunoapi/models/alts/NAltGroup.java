@@ -1,4 +1,4 @@
-package com.github.cyberryan1.netunoapi.database.helpers;
+package com.github.cyberryan1.netunoapi.models.alts;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class AltGroup {
+public class NAltGroup {
 
     private int groupId = -1;
     private List<String> altUuids = new ArrayList<>();
     private List<String> ipList = new ArrayList<>();
 
-    public AltGroup( int groupId, List<String> altUuids, List<String> ipList ) {
+    public NAltGroup( int groupId, List<String> altUuids, List<String> ipList ) {
         this.groupId = groupId;
         this.altUuids = altUuids;
         this.ipList = ipList;
     }
 
-    public AltGroup() {}
+    public NAltGroup() {}
 
     //
     // Main Methods
