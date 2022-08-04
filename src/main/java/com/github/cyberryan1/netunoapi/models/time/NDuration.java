@@ -3,7 +3,19 @@ package com.github.cyberryan1.netunoapi.models.time;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NTimeLength {
+/**
+ * Represents a length of time, such as 5 minutes, 12 seconds, 5 hours, etc.
+ * Can support any unit of time up to weeks. <br><br>
+ *
+ * Formatted strings look like: "12 hours", "6 days", or "1 minute". <br>
+ * Unformatted strings look like: "12h", "6d", or "1m". <br>
+ * Timestamp lengths are the number of seconds a length represents. For example,
+ *      43200 = 12 hours, 518400 = 6 days, and 60 = 1 minute.
+ * <br><br>
+ *
+ * Units Supported: s || seconds, m || minutes, h || hours, d || days, w || weeks
+ */
+public class NDuration {
 
     //
     // Static Methods
@@ -18,13 +30,13 @@ public class NTimeLength {
 
     /**
      * Converts the unformatted length format into seconds,
-     * returning it as a {@link NTimeLength}. <br>
+     * returning it as a {@link NDuration}. <br>
      * Example: "1h" -> 3600 seconds, "1d" -> 86400 seconds, etc
      * @param unformatted The unformatted string to convert
      * @return The length in seconds
      */
-    public static NTimeLength fromUnformatted( String unformatted ) {
-        if ( unformatted.equalsIgnoreCase( "forever" ) ) { return new NTimeLength( true ); }
+    public static NDuration fromUnformatted( String unformatted ) {
+        if ( unformatted.equalsIgnoreCase( "forever" ) ) { return new NDuration( true ); }
         String amount = unformatted.substring( 0, unformatted.length() - 1 );
         char unit = unformatted.charAt( unformatted.length() - 1 );
         long seconds = switch ( unit ) {
@@ -36,19 +48,18 @@ public class NTimeLength {
             default -> -1;
         };
 
-        return new NTimeLength( seconds );
+        return new NDuration( seconds );
     }
-
 
     /**
      * Converts the formatted length string into seconds,
-     * returning it as a {@link NTimeLength}. <br>
+     * returning it as a {@link NDuration}. <br>
      * Example: "1 hour" -> 3600, "3 days" -> 259200, etc
      * @param formatted The formatted length string to convert
      * @return The length in seconds
      */
-    public static NTimeLength fromFormatted( String formatted ) {
-        if ( formatted.equalsIgnoreCase( "forever" ) ) { return new NTimeLength( true ); }
+    public static NDuration fromFormatted( String formatted ) {
+        if ( formatted.equalsIgnoreCase( "forever" ) ) { return new NDuration( true ); }
         String[] split = formatted.split( " " );
         String amount = split[0];
         String unit = split[1];
@@ -63,7 +74,7 @@ public class NTimeLength {
             default -> -1;
         };
 
-        return new NTimeLength( seconds );
+        return new NDuration( seconds );
     }
 
     //
@@ -72,11 +83,11 @@ public class NTimeLength {
     private long seconds = -1;
     private boolean forever = false;
 
-    public NTimeLength( long seconds ) {
+    public NDuration( long seconds ) {
         this.seconds = seconds;
     }
 
-    public NTimeLength( boolean forever ) {
+    public NDuration( boolean forever ) {
         this.forever = forever;
     }
 
