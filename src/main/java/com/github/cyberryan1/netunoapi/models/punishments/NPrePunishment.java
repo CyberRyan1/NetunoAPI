@@ -2,10 +2,6 @@ package com.github.cyberryan1.netunoapi.models.punishments;
 
 public class NPrePunishment extends NPunishment {
 
-    public NPrePunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId, boolean needsNotifSent ) {
-        super( id, punishmentType, playerUuid, staffUuid, length, timestamp, reason, guiPun, referencePunId, needsNotifSent );
-    }
-
     public NPrePunishment() {}
 
     public void execute() {
