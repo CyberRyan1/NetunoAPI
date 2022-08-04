@@ -13,22 +13,10 @@ public class NPunishmentData implements Serializable {
     protected long length = 0;
     protected long timestamp = -1;
     protected String reason = null;
+    protected boolean active = false;
     protected boolean guiPun = false;
     protected int referencePunId = -1;
     protected boolean needsNotifSent = false;
-
-    public NPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId, boolean needsNotifSent ) {
-        this.id = id;
-        this.punishmentType = punishmentType;
-        this.playerUuid = playerUuid;
-        this.staffUuid = staffUuid;
-        this.length = length;
-        this.timestamp = timestamp;
-        this.reason = reason;
-        this.guiPun = guiPun;
-        this.referencePunId = referencePunId;
-        this.needsNotifSent = needsNotifSent;
-    }
 
     public NPunishmentData() {}
 
@@ -82,6 +70,13 @@ public class NPunishmentData implements Serializable {
      */
     public String getReason() {
         return reason;
+    }
+
+    /**
+     * @return Whether the punishment is active (true) or not (false)
+     */
+    public boolean isActive() {
+        return active;
     }
 
     /**
@@ -177,6 +172,14 @@ public class NPunishmentData implements Serializable {
      */
     public void setReason( String reason ) {
         this.reason = reason;
+    }
+
+    /**
+     * @param active Whether the punishment is active (true) or
+     *               not (false).
+     */
+    public void setActive( boolean active ) {
+        this.active = active;
     }
 
     /**
