@@ -63,7 +63,7 @@ public class PunishmentUtils {
      * @return The length remaining, in seconds
      */
     public static long getTimestampLengthRemaining( NPunishment punishment ) {
-        if ( punishment.isActive() == false ) { return -1L; }
+        if ( punishment.dataIsActive() == false ) { return -1L; }
         return punishment.getLength() - ( NTimeLength.getCurrentTimestamp() - punishment.getTimestamp() );
     }
 }
