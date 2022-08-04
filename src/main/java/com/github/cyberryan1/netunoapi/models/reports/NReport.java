@@ -1,17 +1,17 @@
-package com.github.cyberryan1.netunoapi.models;
+package com.github.cyberryan1.netunoapi.models.reports;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
 import java.util.UUID;
 
-public class ANetunoReport extends ANetunoReportData {
+public class NReport extends NReportData {
 
-    public ANetunoReport( int id, String playerUuid, String reporterUuid, long timestamp, String reason ) {
+    public NReport( int id, String playerUuid, String reporterUuid, long timestamp, String reason ) {
         super( id, playerUuid, reporterUuid, timestamp, reason );
     }
 
-    public ANetunoReport() {}
+    public NReport() {}
 
     public void setPlayer( OfflinePlayer player ) {
         setPlayerUuid( player.getUniqueId().toString() );
