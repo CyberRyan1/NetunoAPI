@@ -75,7 +75,7 @@ public class NPunishmentData implements Serializable {
     /**
      * @return Whether the punishment is active (true) or not (false)
      */
-    public boolean isActive() {
+    public boolean dataIsActive() {
         return active;
     }
 
