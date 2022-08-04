@@ -86,9 +86,17 @@ public class NTimeLength {
     }
 
     /**
-     * Converts the timestamp length into a formatted length string. <br>
+     * Alias for the {@link #asTimestamp()} method.
+     * @return The length, in seconds
+     */
+    public long timestamp() {
+        return asTimestamp();
+    }
+
+    /**
+     * Converts the timestamp length into an unformatted length string. <br>
      * Example: 3600 -> "1h", 259200 -> "3d", etc
-     * @return The formatted length string
+     * @return The unformatted length string
      */
     public String asUnformatted() {
         if ( forever ) { return "forever"; }
@@ -102,6 +110,14 @@ public class NTimeLength {
         if ( hours > 0 ) { return hours + "h"; }
         if ( minutes > 0 ) { return minutes + "m"; }
         return seconds + "s";
+    }
+
+    /**
+     * Alias for the {@link #asUnformatted()} method.
+     * @return The unformatted length string
+     */
+    public String unformatted() {
+        return asUnformatted();
     }
 
     /**
@@ -144,5 +160,13 @@ public class NTimeLength {
         }
 
         return toReturn;
+    }
+
+    /**
+     * Alias for the {@link #asFormatted()} method.
+     * @return The formatted length string
+     */
+    public String formatted() {
+        return asFormatted();
     }
 }
