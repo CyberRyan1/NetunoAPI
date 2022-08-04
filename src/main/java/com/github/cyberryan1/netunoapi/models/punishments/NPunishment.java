@@ -17,11 +17,21 @@ public class NPunishment extends NPunishmentData {
      * Returns -1 if the punishment length is permanent.
      */
     public long getSecondsRemaining() {
-        if ( super.punishmentType.hasNoLength() || isActive() == false ) { return 0; }
+        if ( super.punishmentType.hasNoLength() || dataIsActive() == false ) { return 0; }
         if ( super.length == -1 ) { return -1; }
         long remain = super.length - ( NTimeLength.getCurrentTimestamp() - super.timestamp );
         if ( remain < 0 ) { return 0; }
         return remain;
+    }
+
+    /**
+     * @return False if the punishment has been designated as inactive in
+     * the database, if the punishment has no length, or if the punishment
+     * has expired. True otherwise.
+     */
+    public boolean isActive() {
+        long secondsRemain = getSecondsRemaining();
+        return secondsRemain != 0;
     }
 
     /**
