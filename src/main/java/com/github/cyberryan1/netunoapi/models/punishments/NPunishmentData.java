@@ -1,11 +1,10 @@
-package com.github.cyberryan1.netunoapi.models;
+package com.github.cyberryan1.netunoapi.models.punishments;
 
-import com.github.cyberryan1.netunoapi.models.helpers.PunishmentType;
 import org.bukkit.OfflinePlayer;
 
 import java.io.Serializable;
 
-public class ANetunoPunishmentData implements Serializable {
+public class NPunishmentData implements Serializable {
 
     protected int id = -1;
     protected PunishmentType punishmentType = null;
@@ -18,7 +17,7 @@ public class ANetunoPunishmentData implements Serializable {
     protected int referencePunId = -1;
     protected boolean needsNotifSent = false;
 
-    public ANetunoPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId, boolean needsNotifSent ) {
+    public NPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid, long length, long timestamp, String reason, boolean guiPun, int referencePunId, boolean needsNotifSent ) {
         this.id = id;
         this.punishmentType = punishmentType;
         this.playerUuid = playerUuid;
@@ -31,7 +30,7 @@ public class ANetunoPunishmentData implements Serializable {
         this.needsNotifSent = needsNotifSent;
     }
 
-    public ANetunoPunishmentData() {}
+    public NPunishmentData() {}
 
     /**
      * @return The ID of the punishment.
