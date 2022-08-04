@@ -250,4 +250,11 @@ public class NDuration {
     public String fullLength() {
         return asFullLength();
     }
+
+    /**
+     * @return True if the length is forever, false otherwise
+     */
+    public boolean isForever() {
+        return forever;
+    }
 }
