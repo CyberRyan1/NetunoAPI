@@ -13,7 +13,7 @@ public class NAltGroup {
     private int groupId = -1;
     private List<String> altUuids = new ArrayList<>();
     private List<String> ipList = new ArrayList<>();
-    private List<NPunishment> activeIppuns = new ArrayList<>();
+    private List<NPunishment> activePuns = new ArrayList<>();
 
     public NAltGroup( int groupId, List<String> altUuids, List<String> ipList ) {
         this.groupId = groupId;
@@ -85,8 +85,8 @@ public class NAltGroup {
         return ipList;
     }
 
-    public List<NPunishment> getActiveIppuns() {
-        return activeIppuns;
+    public List<NPunishment> getActivePuns() {
+        return activePuns;
     }
 
     public void setGroupId( int groupId ) {
@@ -101,7 +101,7 @@ public class NAltGroup {
         this.ipList = ipList;
     }
 
-    public void setActiveIppuns( List<NPunishment> activeIppuns ) {
-        this.activeIppuns = activeIppuns;
+    public void setActivePuns( List<NPunishment> activeIppuns ) {
+        this.activePuns = activeIppuns;
     }
 }
