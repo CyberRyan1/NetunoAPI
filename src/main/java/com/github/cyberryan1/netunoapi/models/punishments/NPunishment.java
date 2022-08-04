@@ -16,7 +16,7 @@ public class NPunishment extends NPunishmentData {
      * 0 if the punishment has no length or if the punishment is not active.
      * Returns -1 if the punishment length is permanent.
      */
-    public long getLengthRemaining() {
+    public long getSecondsRemaining() {
         if ( super.punishmentType.hasNoLength() || isActive() == false ) { return 0; }
         if ( super.length == -1 ) { return -1; }
         long remain = super.length - ( NTimeLength.getCurrentTimestamp() - super.timestamp );
