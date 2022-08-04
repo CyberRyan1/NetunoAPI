@@ -1,26 +1,13 @@
 package com.github.cyberryan1.netunoapi.models.time;
 
+import com.github.cyberryan1.netunoapi.utils.TimeUtils;
+
 import java.sql.Timestamp;
 
 /**
  * Represents a date by a timestamp.
  */
 public class NDate {
-
-    //
-    // Static Methods
-    //
-
-    /**
-     * @return The current timestamp, in seconds (not milliseconds!)
-     */
-    public static long getCurrentTimestamp() {
-        return System.currentTimeMillis() / 1000;
-    }
-
-    //
-    // Class Methods
-    //
 
     private long timestamp;
 
@@ -29,7 +16,7 @@ public class NDate {
     }
 
     public NDate() {
-        this.timestamp = getCurrentTimestamp();
+        this.timestamp = TimeUtils.getCurrentTimestamp();
     }
 
     /**
@@ -59,7 +46,7 @@ public class NDate {
      */
     public boolean durationSinceExceedsNow( NDuration duration ) {
         if ( duration.isForever() ) { return false; }
-        return timestamp + duration.timestamp() > getCurrentTimestamp();
+        return timestamp + duration.timestamp() > TimeUtils.getCurrentTimestamp();
     }
 
     /**
