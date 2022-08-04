@@ -8,6 +8,10 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * @deprecated We use permanent caches instead of expiring caches.
+ * @param <T> The type of the cache
+ */
 public class ExpiringCache<T> {
 
     private Map<T, Long> cache = new HashMap<>();
