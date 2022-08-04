@@ -37,11 +37,24 @@ public class PunishmentUtils {
      * @return The punishment that is active and has the longest length remaining
      */
     public static NPunishment getHighestActive( List<NPunishment> punishments, PunishmentType type ) {
-        return punishments.stream()
-                .filter( ( p ) -> p.getPunishmentType() == type )
-                .filter( NPunishment::isActive )
-                .max( ( a, b ) -> ( int ) ( getTimestampLengthRemaining( a ) - getTimestampLengthRemaining( b ) ) )
-                .orElse( null );
+        // Get all the active punishments of the specified type
+        // From that list, get the punishment with the highest length remaining
+        // Note that -1 means the length is permanent, so it will always be the highest
+        final List<NPunishment> active = getActive( punishments );
+
+        NPunishment highest = null;
+        for ( NPunishment punishment : active ) {
+            if ( punishment.getPunishmentType() == type ) {
+                if ( punishment.getSecondsRemaining() == -1 ) {
+                    return punishment;
+                }
+
+                if ( highest == null ) { highest = punishment; }
+                else if ( punishment.getSecondsRemaining() > highest.getSecondsRemaining() ) { highest = punishment; }
+            }
+        }
+
+        return highest;
     }
 
     /**
