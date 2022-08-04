@@ -7,5 +7,13 @@ public interface NetunoApi {
 
     DatabaseConnection getConnectionManager();
 
+    default DatabaseConnection getConn() {
+        return getConnectionManager();
+    }
+
     NetunoDatabases getDatabaseManager();
+
+    default NetunoDatabases getDatabases() {
+        return getDatabaseManager();
+    }
 }
