@@ -24,12 +24,19 @@ public class NPunishment extends NPunishmentData {
         return remain;
     }
 
+    /**
+     * @return The amount of seconds remaining in the punishment as a
+     * {@link NTimeLength} object.
+     */
     public NTimeLength getLengthRemaining() {
         long remain = getSecondsRemaining();
         if ( remain == -1 ) { return new NTimeLength( true ); }
         return new NTimeLength( remain );
     }
 
+    /**
+     * @return The length of the punishment as a {@link NTimeLength} object.
+     */
     public NTimeLength getTimeLength() {
         if ( super.length == -1 ) { return new NTimeLength( true ); }
         return new NTimeLength( super.length );
