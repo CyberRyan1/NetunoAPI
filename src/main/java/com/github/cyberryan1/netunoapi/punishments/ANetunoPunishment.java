@@ -38,6 +38,11 @@ public class ANetunoPunishment extends ANetunoPunishmentData {
         return Bukkit.getOfflinePlayer( UUID.fromString( super.staffUuid ) );
     }
 
+    /**
+     * Checks if the punishment is completely filled with the correct information
+     * @param requireValidId If the punishment id should be above 0 (true) or less than or equal to 0 (false)
+     * @throws ClassIncompleteException If the punishment is incomplete
+     */
     public void ensureValid( boolean requireValidId ) {
         if ( requireValidId && this.id <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment ID must be greater than zero" ); }
         if ( requireValidId == false && this.id > 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment ID must be less than or equal to zero" ); }
