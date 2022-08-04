@@ -1,5 +1,6 @@
-package com.github.cyberryan1.netunoapi.punishments;
+package com.github.cyberryan1.netunoapi.models;
 
+import com.github.cyberryan1.netunoapi.models.helpers.PunishmentType;
 import org.bukkit.OfflinePlayer;
 
 import java.io.Serializable;

@@ -1,7 +1,7 @@
 package com.github.cyberryan1.netunoapi.database;
 
-import com.github.cyberryan1.netunoapi.punishments.ANetunoPunishment;
-import com.github.cyberryan1.netunoapi.punishments.ANetunoPunishmentData;
+import com.github.cyberryan1.netunoapi.models.ANetunoPunishment;
+import com.github.cyberryan1.netunoapi.models.ANetunoPunishmentData;
 import com.github.cyberryan1.netunoapi.utils.helpers.ExpiringCache;
 import org.bukkit.OfflinePlayer;
 

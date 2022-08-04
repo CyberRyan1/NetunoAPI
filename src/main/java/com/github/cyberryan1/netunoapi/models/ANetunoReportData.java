@@ -1,4 +1,4 @@
-package com.github.cyberryan1.netunoapi.reports;
+package com.github.cyberryan1.netunoapi.models;
 
 public class ANetunoReportData {
 

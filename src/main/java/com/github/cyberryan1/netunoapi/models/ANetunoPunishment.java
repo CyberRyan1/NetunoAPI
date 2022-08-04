@@ -1,5 +1,6 @@
-package com.github.cyberryan1.netunoapi.punishments;
+package com.github.cyberryan1.netunoapi.models;
 
+import com.github.cyberryan1.netunoapi.models.helpers.PunishmentType;
 import com.github.cyberryan1.netunoapi.utils.TimeUtils;
 import com.github.cyberryan1.netunoapi.utils.helpers.ClassIncompleteException;
 import org.bukkit.Bukkit;

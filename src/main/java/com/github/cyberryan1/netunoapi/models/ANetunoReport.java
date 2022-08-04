@@ -1,4 +1,4 @@
-package com.github.cyberryan1.netunoapi.reports;
+package com.github.cyberryan1.netunoapi.models;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;

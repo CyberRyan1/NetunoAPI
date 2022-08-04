@@ -1,7 +1,7 @@
 package com.github.cyberryan1.netunoapi.database;
 
-import com.github.cyberryan1.netunoapi.reports.ANetunoReport;
-import com.github.cyberryan1.netunoapi.reports.ANetunoReportData;
+import com.github.cyberryan1.netunoapi.models.ANetunoReport;
+import com.github.cyberryan1.netunoapi.models.ANetunoReportData;
 import com.github.cyberryan1.netunoapi.utils.helpers.ClassIncompleteException;
 import com.github.cyberryan1.netunoapi.utils.helpers.ExpiringCache;
 import org.bukkit.OfflinePlayer;

@@ -1,7 +1,7 @@
 package com.github.cyberryan1.netunoapi.utils;
 
-import com.github.cyberryan1.netunoapi.punishments.ANetunoPunishment;
-import com.github.cyberryan1.netunoapi.punishments.PunishmentType;
+import com.github.cyberryan1.netunoapi.models.ANetunoPunishment;
+import com.github.cyberryan1.netunoapi.models.helpers.PunishmentType;
 
 import java.util.List;
 import java.util.stream.Collectors;
