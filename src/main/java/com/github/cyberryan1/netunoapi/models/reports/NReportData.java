@@ -1,6 +1,6 @@
-package com.github.cyberryan1.netunoapi.models;
+package com.github.cyberryan1.netunoapi.models.reports;
 
-public class ANetunoReportData {
+public class NReportData {
 
     private int id = -1;
     private String playerUuid = null;
@@ -8,7 +8,7 @@ public class ANetunoReportData {
     private long timestamp = -1L;
     private String reason = null;
 
-    public ANetunoReportData( int id, String playerUuid, String reporterUuid, long timestamp, String reason ) {
+    public NReportData( int id, String playerUuid, String reporterUuid, long timestamp, String reason ) {
         this.id = id;
         this.playerUuid = playerUuid;
         this.reporterUuid = reporterUuid;
@@ -16,7 +16,7 @@ public class ANetunoReportData {
         this.reason = reason;
     }
 
-    public ANetunoReportData() {}
+    public NReportData() {}
 
     public int getId() {
         return id;
