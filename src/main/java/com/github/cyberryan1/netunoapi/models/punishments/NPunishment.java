@@ -1,7 +1,7 @@
 package com.github.cyberryan1.netunoapi.models.punishments;
 
 import com.github.cyberryan1.netunoapi.exceptions.ClassIncompleteException;
-import com.github.cyberryan1.netunoapi.utils.TimeUtils;
+import com.github.cyberryan1.netunoapi.models.time.NTimeLength;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
@@ -19,7 +19,7 @@ public class NPunishment extends NPunishmentData {
     public long getLengthRemaining() {
         if ( super.punishmentType.hasNoLength() || isActive() == false ) { return 0; }
         if ( super.length == -1 ) { return -1; }
-        long remain = super.length - ( TimeUtils.getCurrentTimestamp() - super.timestamp );
+        long remain = super.length - ( NTimeLength.getCurrentTimestamp() - super.timestamp );
         if ( remain < 0 ) { return 0; }
         return remain;
     }
