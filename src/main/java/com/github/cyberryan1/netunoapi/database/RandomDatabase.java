@@ -7,10 +7,10 @@ package com.github.cyberryan1.netunoapi.database;
  * <b>(!) The use of the RandomDatabase is to be implemented on your own.
  * You pretty much <u>no use</u> for this if you are not the Netuno developer.</b>
  */
-public class RandomDatabase {
+public interface RandomDatabase {
 
-    public final String TABLE_NAME = "random";
-    public final String TYPE_LIST = "(key, value)";
-    public final String UNKNOWN_LIST = "(?, ?)";
+    String TABLE_NAME = "random";
+    String TYPE_LIST = "(key, value)";
+    String UNKNOWN_LIST = "(?, ?)";
 
 }

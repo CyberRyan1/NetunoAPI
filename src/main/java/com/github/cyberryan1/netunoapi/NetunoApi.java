@@ -1,17 +1,11 @@
 package com.github.cyberryan1.netunoapi;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import com.github.cyberryan1.netunoapi.database.DatabaseConnection;
+import com.github.cyberryan1.netunoapi.database.NetunoDatabases;
 
-public final class NetunoApi extends JavaPlugin {
+public interface NetunoApi {
 
-    @Override
-    public void onEnable() {
-        // Plugin startup logic
+    DatabaseConnection getConnectionManager();
 
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
-    }
+    NetunoDatabases getDatabaseManager();
 }
