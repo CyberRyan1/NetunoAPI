@@ -2,7 +2,6 @@ package com.github.cyberryan1.netunoapi.database;
 
 import com.github.cyberryan1.netunoapi.punishments.ANetunoPunishment;
 import com.github.cyberryan1.netunoapi.punishments.ANetunoPunishmentData;
-import com.github.cyberryan1.netunoapi.utils.helpers.ClassIncompleteException;
 import com.github.cyberryan1.netunoapi.utils.helpers.ExpiringCache;
 import org.bukkit.OfflinePlayer;
 
@@ -36,7 +35,7 @@ public class PunishmentsDatabase {
      * @param punishment The punishment to add
      */
     public void addPunishment( ANetunoPunishment punishment ) {
-        checkPunishment( punishment, false );
+        punishment.ensureValid( false );
 
         try {
             PreparedStatement ps = ApiConnection.getConn().prepareStatement( "INSERT INTO " + TABLE_NAME + "(player, data, guipun, reference) VALUES(?, ?, ?, ?);" );
@@ -221,7 +220,7 @@ public class PunishmentsDatabase {
      * @param newData The updated punishment data
      */
     public void updatePunishment( ANetunoPunishment newData ) {
-        checkPunishment( newData, true );
+        newData.ensureValid( true );
         cache.removeAllWhere( p -> p.getId() == newData.getId() );
         cache.add( newData );
 
@@ -326,23 +325,5 @@ public class PunishmentsDatabase {
         }
 
         return toReturn;
-    }
-
-    /**
-     * Checks if a punishment is completely filled with the correct information
-     * @param pun The punishment to check
-     * @param shouldBeValidId If the punishment id should be above 0 (true) or less than or equal to 0 (false)
-     * @throws ClassIncompleteException If the punishment is incomplete
-     */
-    public void checkPunishment( ANetunoPunishment pun, boolean shouldBeValidId ) {
-        if ( shouldBeValidId && pun.getId() <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment ID must be greater than zero" ); }
-        if ( shouldBeValidId == false && pun.getId() > 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment ID must be less than or equal to zero" ); }
-        if ( pun.getPunishmentType() == null ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment type cannot be null" ); }
-        if ( pun.getPlayerUuid() == null ) { throw new ClassIncompleteException( "Punishment incomplete: Player UUID cannot be null" ); }
-        if ( pun.getStaffUuid() == null ) { throw new ClassIncompleteException( "Punishment incomplete: Staff UUID cannot be null" ); }
-        if ( pun.getLength() <= 0 && pun.getPunishmentType().hasNoLength() == false ) { throw new ClassIncompleteException( "Punishment incomplete: Length must be greater than zero seconds" ); }
-        if ( pun.getTimestamp() <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Timestamp must be greater than zero" ); }
-        if ( pun.getReason() == null ) { throw new ClassIncompleteException( "Punishment incomplete: Reason cannot be null" ); }
-        if ( pun.getPunishmentType().isIpPunishment() && pun.getReferencePunId() <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Reference Punishment ID must be greater than zero for IP punishments" ); }
     }
 }
