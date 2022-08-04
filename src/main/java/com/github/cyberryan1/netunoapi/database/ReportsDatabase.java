@@ -61,8 +61,7 @@ public interface ReportsDatabase {
     void deleteReports( String playerUuid );
 
     /**
-     * Deletes all reports that are older than the given time
-     * @param maxAge The maximum age of the reports to delete, in seconds
+     * Deletes all reports that are older than the expiration time
      */
-    void deleteOldReports( long maxAge );
+    void deleteOldReports();
 }
