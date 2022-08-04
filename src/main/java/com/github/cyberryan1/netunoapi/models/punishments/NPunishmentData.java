@@ -10,7 +10,7 @@ public class NPunishmentData implements Serializable {
     protected PunishmentType punishmentType = null;
     protected String playerUuid = null;
     protected String staffUuid = null;
-    protected long length = -1;
+    protected long length = 0;
     protected long timestamp = -1;
     protected String reason = null;
     protected boolean guiPun = false;
