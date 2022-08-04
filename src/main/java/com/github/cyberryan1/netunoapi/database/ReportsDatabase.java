@@ -1,7 +1,6 @@
 package com.github.cyberryan1.netunoapi.database;
 
 import com.github.cyberryan1.netunoapi.models.reports.NReport;
-import com.github.cyberryan1.netunoapi.utils.ExpiringCache;
 import org.bukkit.OfflinePlayer;
 
 import java.util.List;
@@ -11,7 +10,7 @@ public interface ReportsDatabase {
     /**
      * @return The cache of reports.
      */
-    ExpiringCache<NReport> getCache();
+    List<NReport> getCache();
 
     /**
      * Adds a report to the database, but not the cache
@@ -35,7 +34,7 @@ public interface ReportsDatabase {
      * be searched. If you want to search just the database, then
      * use the {@link #forceGetReports( OfflinePlayer )} method</i>
      * @param player The player to search for
-     * @return A {@link List< NReport >} of all reports for the player
+     * @return A {@link List<NReport>} of all reports for the player
      */
     List<NReport> getReports( OfflinePlayer player );
 
@@ -47,7 +46,7 @@ public interface ReportsDatabase {
      * be searched. If you want to search just the database, then
      * use the {@link #forceGetReports( String )} method</i>
      * @param playerUuid The player UUID to search for
-     * @return A {@link List< NReport >} of all reports for the player
+     * @return A {@link List<NReport>} of all reports for the player
      */
     List<NReport> getReports( String playerUuid );
 
@@ -57,7 +56,7 @@ public interface ReportsDatabase {
      * <i>If you want to search the cache first then the database,
      * use the {@link #getReports( String )} method</i>
      * @param player The {@link OfflinePlayer} to search for
-     * @return A {@link List< NReport >} of all reports for the player
+     * @return A {@link List<NReport>} of all reports for the player
      */
     List<NReport> forceGetReports( OfflinePlayer player );
 
@@ -67,7 +66,7 @@ public interface ReportsDatabase {
      * <i>If you want to search the cache first then the database,
      * use the {@link #getReports( String )} method</i>
      * @param playerUuid The player UUID to search for
-     * @return A {@link List< NReport >} of all reports for the player
+     * @return A {@link List<NReport>} of all reports for the player
      */
     List<NReport> forceGetReports( String playerUuid );
 
@@ -88,4 +87,10 @@ public interface ReportsDatabase {
      * @param playerUuid The UUID of the player to delete reports for
      */
     void deleteReports( String playerUuid );
+
+    /**
+     * Deletes all reports that are older than the given time
+     * @param maxAge The maximum age of the reports to delete, in seconds
+     */
+    void deleteOldReports( long maxAge );
 }
