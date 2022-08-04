@@ -2,7 +2,7 @@ package com.github.cyberryan1.netunoapi.utils;
 
 import com.github.cyberryan1.netunoapi.models.punishments.NPunishment;
 import com.github.cyberryan1.netunoapi.models.punishments.PunishmentType;
-import com.github.cyberryan1.netunoapi.models.time.NTimeLength;
+import com.github.cyberryan1.netunoapi.models.time.NDuration;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -64,6 +64,6 @@ public class PunishmentUtils {
      */
     public static long getTimestampLengthRemaining( NPunishment punishment ) {
         if ( punishment.dataIsActive() == false ) { return -1L; }
-        return punishment.getLength() - ( NTimeLength.getCurrentTimestamp() - punishment.getTimestamp() );
+        return punishment.getLength() - ( NDuration.getCurrentTimestamp() - punishment.getTimestamp() );
     }
 }
