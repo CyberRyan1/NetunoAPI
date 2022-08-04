@@ -21,6 +21,7 @@ public class NTimeLength {
      * @return The length in seconds
      */
     public static NTimeLength fromUnformatted( String unformatted ) {
+        if ( unformatted.equalsIgnoreCase( "forever" ) ) { return new NTimeLength( true ); }
         String amount = unformatted.substring( 0, unformatted.length() - 1 );
         char unit = unformatted.charAt( unformatted.length() - 1 );
         long seconds = switch ( unit ) {
@@ -44,6 +45,7 @@ public class NTimeLength {
      * @return The length in seconds
      */
     public static NTimeLength fromFormatted( String formatted ) {
+        if ( formatted.equalsIgnoreCase( "forever" ) ) { return new NTimeLength( true ); }
         String[] split = formatted.split( " " );
         String amount = split[0];
         String unit = split[1];
@@ -65,15 +67,21 @@ public class NTimeLength {
     // Class Methods & Variables
     //
     private long seconds = -1;
+    private boolean forever = false;
 
     public NTimeLength( long seconds ) {
         this.seconds = seconds;
+    }
+
+    public NTimeLength( boolean forever ) {
+        this.forever = forever;
     }
 
     /**
      * @return The length, in seconds
      */
     public long asTimestamp() {
+        if ( forever ) { return -1; }
         return seconds;
     }
 
@@ -83,6 +91,7 @@ public class NTimeLength {
      * @return The formatted length string
      */
     public String asUnformatted() {
+        if ( forever ) { return "forever"; }
         long minutes = ( seconds / 60 ) % 60;
         long hours = ( seconds / 3600 ) % 24;
         long days = ( seconds / 86400 ) % 7;
@@ -101,6 +110,7 @@ public class NTimeLength {
      * @return The formatted length string
      */
     public String asFormatted() {
+        if ( forever ) { return "Forever"; }
         long secs = seconds % 60;
         long minutes = ( seconds / 60 ) % 60;
         long hours = ( seconds / 3600 ) % 24;
