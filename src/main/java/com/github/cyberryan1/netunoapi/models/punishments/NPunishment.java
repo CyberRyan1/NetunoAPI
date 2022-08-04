@@ -24,6 +24,12 @@ public class NPunishment extends NPunishmentData {
         return remain;
     }
 
+    public NTimeLength getLengthRemaining() {
+        long remain = getSecondsRemaining();
+        if ( remain == -1 ) { return new NTimeLength( true ); }
+        return new NTimeLength( remain );
+    }
+
     /**
      * @return The player as an {@link OfflinePlayer}
      */
