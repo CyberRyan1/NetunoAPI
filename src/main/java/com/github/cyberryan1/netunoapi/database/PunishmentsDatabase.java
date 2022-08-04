@@ -1,17 +1,11 @@
 package com.github.cyberryan1.netunoapi.database;
 
 import com.github.cyberryan1.netunoapi.models.punishments.NPunishment;
-import com.github.cyberryan1.netunoapi.utils.ExpiringCache;
 import org.bukkit.OfflinePlayer;
 
 import java.util.List;
 
 public interface PunishmentsDatabase {
-
-    /**
-     * @return The cache of punishments.
-     */
-    ExpiringCache<NPunishment> getCache();
 
     /**
      * Adds a punishment to the database, but not the cache
