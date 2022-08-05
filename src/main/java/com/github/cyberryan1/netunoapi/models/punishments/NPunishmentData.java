@@ -2,9 +2,12 @@ package com.github.cyberryan1.netunoapi.models.punishments;
 
 import org.bukkit.OfflinePlayer;
 
-import java.io.Serializable;
+import java.sql.SQLData;
+import java.sql.SQLException;
+import java.sql.SQLInput;
+import java.sql.SQLOutput;
 
-public class NPunishmentData implements Serializable {
+public class NPunishmentData implements SQLData {
 
     protected int id = -1;
     protected PunishmentType punishmentType = null;
@@ -17,6 +20,7 @@ public class NPunishmentData implements Serializable {
     protected boolean guiPun = false;
     protected int referencePunId = -1;
     protected boolean needsNotifSent = false;
+    private String sqlType;
 
     public NPunishmentData() {}
 
@@ -227,5 +231,44 @@ public class NPunishmentData implements Serializable {
                 ", referencePunId=" + referencePunId +
                 ", needsNotifSent=" + needsNotifSent +
                 '}';
+    }
+
+    //
+    // SQL Stuff
+    //
+
+    @Override
+    public String getSQLTypeName() throws SQLException {
+        return this.sqlType;
+    }
+
+    @Override
+    public void readSQL( SQLInput stream, String typeName ) throws SQLException {
+        this.sqlType = typeName;
+        this.id = stream.readInt();
+        this.punishmentType = PunishmentType.valueOf( stream.readString() );
+        this.playerUuid = stream.readString();
+        this.staffUuid = stream.readString();
+        this.length = stream.readLong();
+        this.timestamp = stream.readLong();
+        this.reason = stream.readString();
+        this.active = stream.readBoolean();
+        this.guiPun = stream.readBoolean();
+        this.referencePunId = stream.readInt();
+    }
+
+    @Override
+    public void writeSQL( SQLOutput stream ) throws SQLException {
+        stream.writeInt( this.id );
+        stream.writeString( this.punishmentType.name() );
+        stream.writeString( this.playerUuid );
+        stream.writeString( this.staffUuid );
+        stream.writeLong( this.length );
+        stream.writeLong( this.timestamp );
+        stream.writeString( this.reason );
+        stream.writeBoolean( this.active );
+        stream.writeBoolean( this.guiPun );
+        stream.writeInt( this.referencePunId );
+        stream.writeBoolean( this.needsNotifSent );
     }
 }
