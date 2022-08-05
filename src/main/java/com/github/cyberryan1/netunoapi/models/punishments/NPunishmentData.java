@@ -2,56 +2,91 @@ package com.github.cyberryan1.netunoapi.models.punishments;
 
 import org.bukkit.OfflinePlayer;
 
-public interface NPunishmentData /*extends SQLData*/ {
+import java.io.Serializable;
+
+public class NPunishmentData implements Serializable {
+
+    protected int id = -1;
+    protected String punishmentTypeStr = null;
+    protected String playerUuid = null;
+    protected String staffUuid = null;
+    protected long length = 0;
+    protected long timestamp = -1;
+    protected String reason = null;
+    protected boolean active = false;
+    protected boolean guiPun = false;
+    protected int referencePunId = -1;
+    protected boolean needsNotifSent = false;
+    private String sqlType;
+
+    public NPunishmentData() {}
 
     /**
      * @return The ID of the punishment.
      */
-    int getId();
+    public int getId() {
+        return id;
+    }
 
     /**
      * @return The string type of punishment.
      */
-    String getPunishmentTypeStr();
+    public String getPunishmentTypeStr() {
+        return punishmentTypeStr;
+    }
 
     /**
      * @return The UUID of the player who was punished.
      */
-    String getPlayerUuid();
+    public String getPlayerUuid() {
+        return playerUuid;
+    }
 
     /**
      * @return The UUID of the staff member who punished the player.
      * May be "CONSOLE" to represent console punishments.
      */
-    String getStaffUuid();
+    public String getStaffUuid() {
+        return staffUuid;
+    }
 
     /**
      * @return The length of the punishment in seconds. May be -1 to
      * represent permanent punishments or punishments with no length,
      * such as warns, kicks, unmutes, etc.
      */
-    long getLength();
+    public long getLength() {
+        return length;
+    }
 
     /**
      * @return The timestamp of the punishment.
      */
-    long getTimestamp();
+    public long getTimestamp() {
+        return timestamp;
+    }
 
     /**
      * @return The reason for the punishment.
      */
-    String getReason();
+    public String getReason() {
+        return reason;
+    }
 
     /**
      * @return Whether the punishment is active (true) or not (false)
      */
-    boolean dataIsActive();
+    public boolean dataIsActive() {
+        return active;
+    }
 
     /**
      * @return Whether the punishment was executed via the punishment
      * GUI (true) or not (false)
      */
-    boolean isGuiPun();
+    public boolean isGuiPun() {
+        return guiPun;
+    }
 
     /**
      * @return The ID of the punishment that this punishment is a
@@ -59,46 +94,62 @@ public interface NPunishmentData /*extends SQLData*/ {
      * IP punishment, like an IP ban, IP mute, etc. Otherwise, it
      * should be -1.
      */
-    int getReferencePunId();
+    public int getReferencePunId() {
+        return referencePunId;
+    }
 
     /**
      * @return Whether the notification has been sent for this
      * punishment (true) or not (false). Should only be set to true
      * if the punishment type is a warning.
      */
-    boolean needsNotifSent();
+    public boolean needsNotifSent() {
+        return needsNotifSent;
+    }
 
     /**
      * @param id The ID of the punishment. Must be greater than 0.
      */
-    void setId( int id );
+    public void setId( int id ) {
+        this.id = id;
+    }
 
     /**
      * @param punishmentTypeStr The type of punishment.
      */
-    void setPunishmentTypeStr( String punishmentTypeStr );
+    public void setPunishmentTypeStr( String punishmentTypeStr ) {
+        this.punishmentTypeStr = punishmentTypeStr;
+    }
 
     /**
      * @param playerUuid The UUID of the player who was punished.
      */
-    void setPlayerUuid( String playerUuid );
+    public void setPlayerUuid( String playerUuid ) {
+        this.playerUuid = playerUuid;
+    }
 
     /**
      * @param player The player who was punished.
      */
-    void setPlayer( OfflinePlayer player );
+    public void setPlayer( OfflinePlayer player ) {
+        this.playerUuid = player.getUniqueId().toString();
+    }
 
     /**
      * @param staffUuid The UUID of the staff member who punished
      *                  the player. May be "CONSOLE" to represent
      *                  console punishments.
      */
-    void setStaffUuid( String staffUuid );
+    public void setStaffUuid( String staffUuid ) {
+        this.staffUuid = staffUuid;
+    }
 
     /**
      * @param staff The staff member who punished the player.
      */
-    void setStaff( OfflinePlayer staff );
+    public void setStaff( OfflinePlayer staff ) {
+        this.staffUuid = staff.getUniqueId().toString();
+    }
 
     /**
      * @param length The length of the punishment in seconds.
@@ -106,29 +157,39 @@ public interface NPunishmentData /*extends SQLData*/ {
      *               or punishments with no length, such as warns,
      *               kicks, unmutes, etc.
      */
-    void setLength( long length );
+    public void setLength( long length ) {
+        this.length = length;
+    }
 
     /**
      * @param timestamp The timestamp of the punishment.
      */
-    void setTimestamp( long timestamp );
+    public void setTimestamp( long timestamp ) {
+        this.timestamp = timestamp;
+    }
 
     /**
      * @param reason The reason for the punishment.
      */
-    void setReason( String reason );
+    public void setReason( String reason ) {
+        this.reason = reason;
+    }
 
     /**
      * @param active Whether the punishment is active (true) or
      *               not (false).
      */
-    void setActive( boolean active );
+    public void setActive( boolean active ) {
+        this.active = active;
+    }
 
     /**
      * @param guiPun Whether the punishment was executed via the
      *              punishment GUI (true) or not (false)
      */
-    void setGuiPun( boolean guiPun );
+    public void setGuiPun( boolean guiPun ) {
+        this.guiPun = guiPun;
+    }
 
     /**
      * @param referencePunId The ID of the punishment that this
@@ -137,7 +198,9 @@ public interface NPunishmentData /*extends SQLData*/ {
      *                        IP punishment, like an IP ban, IP
      *                        mute, etc. Otherwise, it should be -1.
      */
-    void setReferencePunId( int referencePunId );
+    public void setReferencePunId( int referencePunId ) {
+        this.referencePunId = referencePunId;
+    }
 
     /**
      * @param needsNotifSent Whether the notification has been sent
@@ -145,24 +208,25 @@ public interface NPunishmentData /*extends SQLData*/ {
      *                       (false). Should only be set to true if
      *                       the punishment type is a warning.
      */
-    void setNeedsNotifSent( boolean needsNotifSent );
+    public void setNeedsNotifSent( boolean needsNotifSent ) {
+        this.needsNotifSent = needsNotifSent;
+    }
 
     /**
      * I hope this is obvious.
      */
     @Override
-    String toString();
-
-    //
-    // SQL Stuff
-    //
-//
-//    @Override
-//    String getSQLTypeName() throws SQLException;
-//
-//    @Override
-//    void readSQL( SQLInput stream, String typeName ) throws SQLException;
-//
-//    @Override
-//    void writeSQL( SQLOutput stream ) throws SQLException;
+    public String toString() {
+        return "NetunoPunishmentData{" + "id=" + id +
+                ", punishmentTypeStr=" + punishmentTypeStr +
+                ", playerUuid=" + playerUuid +
+                ", staffUuid=" + staffUuid +
+                ", length=" + length +
+                ", timestamp=" + timestamp +
+                ", reason=" + reason +
+                ", guiPun=" + guiPun +
+                ", referencePunId=" + referencePunId +
+                ", needsNotifSent=" + needsNotifSent +
+                '}';
+    }
 }
