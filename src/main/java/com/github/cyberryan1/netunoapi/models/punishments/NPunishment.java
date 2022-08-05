@@ -27,6 +27,20 @@ public class NPunishment extends NPunishmentData {
     }
 
     /**
+     * @param type The {@link PunishmentType} to set
+     */
+    public void setPunishmentType( PunishmentType type ) {
+        super.punishmentTypeStr = type.name();
+    }
+
+    /**
+     * @param type The {@link PunishmentType} to set
+     */
+    public void setType( PunishmentType type ) {
+        super.punishmentTypeStr = type.name();
+    }
+
+    /**
      * @return The amount of seconds remaining in the punishment. Returns
      * 0 if the punishment has no length or if the punishment is not active.
      * Returns -1 if the punishment length is permanent.
