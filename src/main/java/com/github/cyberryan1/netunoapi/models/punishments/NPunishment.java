@@ -13,12 +13,26 @@ public class NPunishment extends NPunishmentData {
     public NPunishment() {}
 
     /**
+     * @return The {@link PunishmentType} of this punishment
+     */
+    public PunishmentType getPunishmentType() {
+        return PunishmentType.valueOf( super.punishmentTypeStr );
+    }
+
+    /**
+     * @return The {@link PunishmentType} of this punishment
+     */
+    public PunishmentType getType() {
+        return PunishmentType.valueOf( super.punishmentTypeStr );
+    }
+
+    /**
      * @return The amount of seconds remaining in the punishment. Returns
      * 0 if the punishment has no length or if the punishment is not active.
      * Returns -1 if the punishment length is permanent.
      */
     public long getSecondsRemaining() {
-        if ( super.punishmentType.hasNoLength() || dataIsActive() == false ) { return 0; }
+        if ( getType().hasNoLength() || dataIsActive() == false ) { return 0; }
         if ( super.length == -1 ) { return -1; }
         long remain = super.length - ( TimeUtils.getCurrentTimestamp() - super.timestamp );
         if ( remain < 0 ) { return 0; }
@@ -75,13 +89,13 @@ public class NPunishment extends NPunishmentData {
     public void ensureValid( boolean requireValidId ) {
         if ( requireValidId && this.id <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment ID must be greater than zero" ); }
         if ( requireValidId == false && this.id > 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment ID must be less than or equal to zero" ); }
-        if ( this.punishmentType == null ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment type cannot be null" ); }
+        if ( this.punishmentTypeStr == null ) { throw new ClassIncompleteException( "Punishment incomplete: Punishment type cannot be null" ); }
         if ( this.playerUuid == null ) { throw new ClassIncompleteException( "Punishment incomplete: Player UUID cannot be null" ); }
         if ( this.staffUuid == null ) { throw new ClassIncompleteException( "Punishment incomplete: Staff UUID cannot be null" ); }
-        if ( this.length <= 0 && this.punishmentType.hasNoLength() == false ) { throw new ClassIncompleteException( "Punishment incomplete: Length must be greater than zero seconds" ); }
+        if ( this.length <= 0 && this.getType().hasNoLength() == false ) { throw new ClassIncompleteException( "Punishment incomplete: Length must be greater than zero seconds" ); }
         if ( this.timestamp <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Timestamp must be greater than zero" ); }
         if ( this.reason == null ) { throw new ClassIncompleteException( "Punishment incomplete: Reason cannot be null" ); }
-        if ( this.punishmentType.isIpPunishment() && this.referencePunId <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Reference Punishment ID must be greater than zero for IP punishments" ); }
+        if ( getType().isIpPunishment() && this.referencePunId <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Reference Punishment ID must be greater than zero for IP punishments" ); }
     }
 
     /**
@@ -90,7 +104,7 @@ public class NPunishment extends NPunishmentData {
     public NPunishment copy() {
         NPunishment clone = new NPunishment();
         clone.id = this.id;
-        clone.punishmentType = this.punishmentType;
+        clone.punishmentTypeStr = this.punishmentTypeStr;
         clone.playerUuid = this.playerUuid;
         clone.staffUuid = this.staffUuid;
         clone.length = this.length;

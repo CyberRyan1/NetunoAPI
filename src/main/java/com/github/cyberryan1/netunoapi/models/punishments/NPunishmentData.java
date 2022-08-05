@@ -11,7 +11,7 @@ import java.sql.SQLOutput;
 public class NPunishmentData implements SQLData, Serializable {
 
     protected int id = -1;
-    protected PunishmentType punishmentType = null;
+    protected String punishmentTypeStr = null;
     protected String playerUuid = null;
     protected String staffUuid = null;
     protected long length = 0;
@@ -33,10 +33,10 @@ public class NPunishmentData implements SQLData, Serializable {
     }
 
     /**
-     * @return The type of punishment.
+     * @return The string type of punishment.
      */
-    public PunishmentType getPunishmentType() {
-        return punishmentType;
+    public String getPunishmentTypeStr() {
+        return punishmentTypeStr;
     }
 
     /**
@@ -119,10 +119,10 @@ public class NPunishmentData implements SQLData, Serializable {
     }
 
     /**
-     * @param punishmentType The type of punishment.
+     * @param punishmentTypeStr The type of punishment.
      */
-    public void setPunishmentType( PunishmentType punishmentType ) {
-        this.punishmentType = punishmentType;
+    public void setPunishmentTypeStr( String punishmentTypeStr ) {
+        this.punishmentTypeStr = punishmentTypeStr;
     }
 
     /**
@@ -222,7 +222,7 @@ public class NPunishmentData implements SQLData, Serializable {
     @Override
     public String toString() {
         return "NetunoPunishmentData{" + "id=" + id +
-                ", punishmentType=" + punishmentType +
+                ", punishmentTypeStr=" + punishmentTypeStr +
                 ", playerUuid=" + playerUuid +
                 ", staffUuid=" + staffUuid +
                 ", length=" + length +
@@ -247,7 +247,7 @@ public class NPunishmentData implements SQLData, Serializable {
     public void readSQL( SQLInput stream, String typeName ) throws SQLException {
         this.sqlType = typeName;
         this.id = stream.readInt();
-        this.punishmentType = PunishmentType.valueOf( stream.readString() );
+        this.punishmentTypeStr = stream.readString();
         this.playerUuid = stream.readString();
         this.staffUuid = stream.readString();
         this.length = stream.readLong();
@@ -261,7 +261,7 @@ public class NPunishmentData implements SQLData, Serializable {
     @Override
     public void writeSQL( SQLOutput stream ) throws SQLException {
         stream.writeInt( this.id );
-        stream.writeString( this.punishmentType.name() );
+        stream.writeString( this.punishmentTypeStr );
         stream.writeString( this.playerUuid );
         stream.writeString( this.staffUuid );
         stream.writeLong( this.length );
