@@ -32,4 +32,17 @@ public enum PunishmentType {
     public boolean isIpPunishment() {
         return ipPunishment;
     }
+
+    //
+    // Static Methods
+    //
+
+    public static PunishmentType fromString( String str ) {
+        for ( PunishmentType type : values() ) {
+            if ( type.name().equalsIgnoreCase( str ) ) {
+                return type;
+            }
+        }
+        return null;
+    }
 }
