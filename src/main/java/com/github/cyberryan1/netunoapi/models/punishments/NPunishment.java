@@ -16,14 +16,14 @@ public class NPunishment extends NPunishmentData {
      * @return The {@link PunishmentType} of this punishment
      */
     public PunishmentType getPunishmentType() {
-        return PunishmentType.valueOf( super.punishmentTypeStr );
+        return PunishmentType.fromString( super.punishmentTypeStr );
     }
 
     /**
      * @return The {@link PunishmentType} of this punishment
      */
     public PunishmentType getType() {
-        return PunishmentType.valueOf( super.punishmentTypeStr );
+        return PunishmentType.fromString( super.punishmentTypeStr );
     }
 
     /**
