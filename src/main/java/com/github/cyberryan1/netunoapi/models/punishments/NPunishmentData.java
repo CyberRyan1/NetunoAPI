@@ -2,12 +2,7 @@ package com.github.cyberryan1.netunoapi.models.punishments;
 
 import org.bukkit.OfflinePlayer;
 
-import java.sql.SQLData;
-import java.sql.SQLException;
-import java.sql.SQLInput;
-import java.sql.SQLOutput;
-
-public interface NPunishmentData extends SQLData {
+public interface NPunishmentData /*extends SQLData*/ {
 
     /**
      * @return The ID of the punishment.
@@ -161,13 +156,13 @@ public interface NPunishmentData extends SQLData {
     //
     // SQL Stuff
     //
-
-    @Override
-    String getSQLTypeName() throws SQLException;
-
-    @Override
-    void readSQL( SQLInput stream, String typeName ) throws SQLException;
-
-    @Override
-    void writeSQL( SQLOutput stream ) throws SQLException;
+//
+//    @Override
+//    String getSQLTypeName() throws SQLException;
+//
+//    @Override
+//    void readSQL( SQLInput stream, String typeName ) throws SQLException;
+//
+//    @Override
+//    void writeSQL( SQLOutput stream ) throws SQLException;
 }
