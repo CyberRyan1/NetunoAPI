@@ -1,6 +1,8 @@
 package com.github.cyberryan1.netunoapi.models.reports;
 
-public class NReportData {
+import java.io.Serializable;
+
+public class NReportData implements Serializable {
 
     private int id = -1;
     private String playerUuid = null;
