@@ -74,4 +74,26 @@ public class TimeUtils {
         long scaledSeconds = ( long ) ( startingSeconds * Math.pow( ( scale * 1F ), ( count - 1 ) ) );
         return new NDuration( scaledSeconds );
     }
+
+    /**
+     * Checks if a given unformatted length is valid.
+     * @param unformattedLength The unformatted length to check
+     * @return True if the length is valid, false otherwise.
+     */
+    public static boolean isAllowableLength( String unformattedLength ) {
+        if ( unformattedLength == null || unformattedLength.length() <= 1 ) { return false; }
+        if ( unformattedLength.equalsIgnoreCase( "forever" ) ) { return true; }
+
+        char unit = unformattedLength.charAt( unformattedLength.length() - 1 );
+        if ( unit != 'w' && unit != 'd' && unit != 'h' && unit != 'm' && unit != 's' ) { return false; }
+
+        int amount;
+        try {
+            amount = Integer.parseInt( unformattedLength.substring( 0, unformattedLength.length() - 1 ) );
+        } catch ( NumberFormatException ex ) {
+            return false;
+        }
+
+        return amount > 0;
+    }
 }
