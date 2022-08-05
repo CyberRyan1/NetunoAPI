@@ -71,7 +71,7 @@ public class TimeUtils {
     public static NDuration getScaledDuration( NDuration start, int scale, int count ) {
         if ( start.isForever() ) { return new NDuration( true ); }
         long startingSeconds = start.timestamp();
-        long scaledSeconds = ( long ) ( startingSeconds * Math.pow( scale, count ) );
+        long scaledSeconds = ( long ) ( startingSeconds * Math.pow( ( scale * 1F ), ( count - 1 ) ) );
         return new NDuration( scaledSeconds );
     }
 }
