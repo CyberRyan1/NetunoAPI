@@ -2,12 +2,13 @@ package com.github.cyberryan1.netunoapi.models.punishments;
 
 import org.bukkit.OfflinePlayer;
 
+import java.io.Serializable;
 import java.sql.SQLData;
 import java.sql.SQLException;
 import java.sql.SQLInput;
 import java.sql.SQLOutput;
 
-public class NPunishmentData implements SQLData {
+public class NPunishmentData implements SQLData, Serializable {
 
     protected int id = -1;
     protected PunishmentType punishmentType = null;
