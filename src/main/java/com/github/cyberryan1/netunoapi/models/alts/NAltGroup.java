@@ -94,4 +94,13 @@ public class NAltGroup {
     public void setIpList( List<String> ipList ) {
         this.ipList = ipList;
     }
+
+    @Override
+    public String toString() {
+        return "NAltGroup{" +
+                "groupId=" + groupId +
+                ", altUuids=" + altUuids +
+                ", ipList=" + ipList +
+                '}';
+    }
 }
