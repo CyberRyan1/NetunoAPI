@@ -17,7 +17,6 @@ public class NPunishmentData implements Serializable {
     protected boolean guiPun = false;
     protected int referencePunId = -1;
     protected boolean needsNotifSent = false;
-    private String sqlType;
 
     public NPunishmentData() {}
 
