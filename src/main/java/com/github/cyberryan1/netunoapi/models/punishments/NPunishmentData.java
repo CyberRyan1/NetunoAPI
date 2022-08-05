@@ -2,95 +2,61 @@ package com.github.cyberryan1.netunoapi.models.punishments;
 
 import org.bukkit.OfflinePlayer;
 
-import java.io.Serializable;
 import java.sql.SQLData;
 import java.sql.SQLException;
 import java.sql.SQLInput;
 import java.sql.SQLOutput;
 
-public class NPunishmentData implements SQLData, Serializable {
-
-    protected int id = -1;
-    protected String punishmentTypeStr = null;
-    protected String playerUuid = null;
-    protected String staffUuid = null;
-    protected long length = 0;
-    protected long timestamp = -1;
-    protected String reason = null;
-    protected boolean active = false;
-    protected boolean guiPun = false;
-    protected int referencePunId = -1;
-    protected boolean needsNotifSent = false;
-    private String sqlType;
-
-    public NPunishmentData() {}
+public interface NPunishmentData extends SQLData {
 
     /**
      * @return The ID of the punishment.
      */
-    public int getId() {
-        return id;
-    }
+    int getId();
 
     /**
      * @return The string type of punishment.
      */
-    public String getPunishmentTypeStr() {
-        return punishmentTypeStr;
-    }
+    String getPunishmentTypeStr();
 
     /**
      * @return The UUID of the player who was punished.
      */
-    public String getPlayerUuid() {
-        return playerUuid;
-    }
+    String getPlayerUuid();
 
     /**
      * @return The UUID of the staff member who punished the player.
      * May be "CONSOLE" to represent console punishments.
      */
-    public String getStaffUuid() {
-        return staffUuid;
-    }
+    String getStaffUuid();
 
     /**
      * @return The length of the punishment in seconds. May be -1 to
      * represent permanent punishments or punishments with no length,
      * such as warns, kicks, unmutes, etc.
      */
-    public long getLength() {
-        return length;
-    }
+    long getLength();
 
     /**
      * @return The timestamp of the punishment.
      */
-    public long getTimestamp() {
-        return timestamp;
-    }
+    long getTimestamp();
 
     /**
      * @return The reason for the punishment.
      */
-    public String getReason() {
-        return reason;
-    }
+    String getReason();
 
     /**
      * @return Whether the punishment is active (true) or not (false)
      */
-    public boolean dataIsActive() {
-        return active;
-    }
+    boolean dataIsActive();
 
     /**
      * @return Whether the punishment was executed via the punishment
      * GUI (true) or not (false)
      */
-    public boolean isGuiPun() {
-        return guiPun;
-    }
+    boolean isGuiPun();
 
     /**
      * @return The ID of the punishment that this punishment is a
@@ -98,62 +64,46 @@ public class NPunishmentData implements SQLData, Serializable {
      * IP punishment, like an IP ban, IP mute, etc. Otherwise, it
      * should be -1.
      */
-    public int getReferencePunId() {
-        return referencePunId;
-    }
+    int getReferencePunId();
 
     /**
      * @return Whether the notification has been sent for this
      * punishment (true) or not (false). Should only be set to true
      * if the punishment type is a warning.
      */
-    public boolean needsNotifSent() {
-        return needsNotifSent;
-    }
+    boolean needsNotifSent();
 
     /**
      * @param id The ID of the punishment. Must be greater than 0.
      */
-    public void setId( int id ) {
-        this.id = id;
-    }
+    void setId( int id );
 
     /**
      * @param punishmentTypeStr The type of punishment.
      */
-    public void setPunishmentTypeStr( String punishmentTypeStr ) {
-        this.punishmentTypeStr = punishmentTypeStr;
-    }
+    void setPunishmentTypeStr( String punishmentTypeStr );
 
     /**
      * @param playerUuid The UUID of the player who was punished.
      */
-    public void setPlayerUuid( String playerUuid ) {
-        this.playerUuid = playerUuid;
-    }
+    void setPlayerUuid( String playerUuid );
 
     /**
      * @param player The player who was punished.
      */
-    public void setPlayer( OfflinePlayer player ) {
-        this.playerUuid = player.getUniqueId().toString();
-    }
+    void setPlayer( OfflinePlayer player );
 
     /**
      * @param staffUuid The UUID of the staff member who punished
      *                  the player. May be "CONSOLE" to represent
      *                  console punishments.
      */
-    public void setStaffUuid( String staffUuid ) {
-        this.staffUuid = staffUuid;
-    }
+    void setStaffUuid( String staffUuid );
 
     /**
      * @param staff The staff member who punished the player.
      */
-    public void setStaff( OfflinePlayer staff ) {
-        this.staffUuid = staff.getUniqueId().toString();
-    }
+    void setStaff( OfflinePlayer staff );
 
     /**
      * @param length The length of the punishment in seconds.
@@ -161,39 +111,29 @@ public class NPunishmentData implements SQLData, Serializable {
      *               or punishments with no length, such as warns,
      *               kicks, unmutes, etc.
      */
-    public void setLength( long length ) {
-        this.length = length;
-    }
+    void setLength( long length );
 
     /**
      * @param timestamp The timestamp of the punishment.
      */
-    public void setTimestamp( long timestamp ) {
-        this.timestamp = timestamp;
-    }
+    void setTimestamp( long timestamp );
 
     /**
      * @param reason The reason for the punishment.
      */
-    public void setReason( String reason ) {
-        this.reason = reason;
-    }
+    void setReason( String reason );
 
     /**
      * @param active Whether the punishment is active (true) or
      *               not (false).
      */
-    public void setActive( boolean active ) {
-        this.active = active;
-    }
+    void setActive( boolean active );
 
     /**
      * @param guiPun Whether the punishment was executed via the
      *              punishment GUI (true) or not (false)
      */
-    public void setGuiPun( boolean guiPun ) {
-        this.guiPun = guiPun;
-    }
+    void setGuiPun( boolean guiPun );
 
     /**
      * @param referencePunId The ID of the punishment that this
@@ -202,9 +142,7 @@ public class NPunishmentData implements SQLData, Serializable {
      *                        IP punishment, like an IP ban, IP
      *                        mute, etc. Otherwise, it should be -1.
      */
-    public void setReferencePunId( int referencePunId ) {
-        this.referencePunId = referencePunId;
-    }
+    void setReferencePunId( int referencePunId );
 
     /**
      * @param needsNotifSent Whether the notification has been sent
@@ -212,64 +150,24 @@ public class NPunishmentData implements SQLData, Serializable {
      *                       (false). Should only be set to true if
      *                       the punishment type is a warning.
      */
-    public void setNeedsNotifSent( boolean needsNotifSent ) {
-        this.needsNotifSent = needsNotifSent;
-    }
+    void setNeedsNotifSent( boolean needsNotifSent );
 
     /**
      * I hope this is obvious.
      */
     @Override
-    public String toString() {
-        return "NetunoPunishmentData{" + "id=" + id +
-                ", punishmentTypeStr=" + punishmentTypeStr +
-                ", playerUuid=" + playerUuid +
-                ", staffUuid=" + staffUuid +
-                ", length=" + length +
-                ", timestamp=" + timestamp +
-                ", reason=" + reason +
-                ", guiPun=" + guiPun +
-                ", referencePunId=" + referencePunId +
-                ", needsNotifSent=" + needsNotifSent +
-                '}';
-    }
+    String toString();
 
     //
     // SQL Stuff
     //
 
     @Override
-    public String getSQLTypeName() throws SQLException {
-        return this.sqlType;
-    }
+    String getSQLTypeName() throws SQLException;
 
     @Override
-    public void readSQL( SQLInput stream, String typeName ) throws SQLException {
-        this.sqlType = typeName;
-        this.id = stream.readInt();
-        this.punishmentTypeStr = stream.readString();
-        this.playerUuid = stream.readString();
-        this.staffUuid = stream.readString();
-        this.length = stream.readLong();
-        this.timestamp = stream.readLong();
-        this.reason = stream.readString();
-        this.active = stream.readBoolean();
-        this.guiPun = stream.readBoolean();
-        this.referencePunId = stream.readInt();
-    }
+    void readSQL( SQLInput stream, String typeName ) throws SQLException;
 
     @Override
-    public void writeSQL( SQLOutput stream ) throws SQLException {
-        stream.writeInt( this.id );
-        stream.writeString( this.punishmentTypeStr );
-        stream.writeString( this.playerUuid );
-        stream.writeString( this.staffUuid );
-        stream.writeLong( this.length );
-        stream.writeLong( this.timestamp );
-        stream.writeString( this.reason );
-        stream.writeBoolean( this.active );
-        stream.writeBoolean( this.guiPun );
-        stream.writeInt( this.referencePunId );
-        stream.writeBoolean( this.needsNotifSent );
-    }
+    void writeSQL( SQLOutput stream ) throws SQLException;
 }
