@@ -2,9 +2,7 @@ package com.github.cyberryan1.netunoapi.models.punishments;
 
 import org.bukkit.OfflinePlayer;
 
-import java.io.Serializable;
-
-public class NPunishmentData implements Serializable {
+public class NPunishmentData {
 
     protected int id = -1;
     protected PunishmentType punishmentType = null;
