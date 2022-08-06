@@ -97,7 +97,7 @@ public class NPunishment extends NPunishmentData {
         if ( this.length <= 0 && this.punishmentType.hasNoLength() == false && this.length != -1 ) { throw new ClassIncompleteException( "Punishment incomplete: Length must be greater than zero seconds" ); }
         if ( this.timestamp <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Timestamp must be greater than zero" ); }
         if ( this.reason == null ) { throw new ClassIncompleteException( "Punishment incomplete: Reason cannot be null" ); }
-        if ( this.punishmentType.isIpPunishment() && this.referencePunId <= 0 ) { throw new ClassIncompleteException( "Punishment incomplete: Reference Punishment ID must be greater than zero for IP punishments" ); }
+        if ( this.punishmentType.isIpPunishment() && this.referencePunId < -1 ) { throw new ClassIncompleteException( "Punishment incomplete: Reference Punishment ID must be greater than zero for IP punishments" ); }
     }
 
     /**
