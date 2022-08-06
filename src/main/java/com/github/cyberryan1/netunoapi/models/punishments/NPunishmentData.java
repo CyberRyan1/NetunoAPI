@@ -18,6 +18,22 @@ public class NPunishmentData implements Serializable {
     protected int referencePunId = -1;
     protected boolean needsNotifSent = false;
 
+    public NPunishmentData( int id, String punishmentTypeStr, String playerUuid, String staffUuid,
+                            long length, long timestamp, String reason, boolean active,
+                            boolean guiPun, int referencePunId, boolean needsNotifSent ) {
+        this.id = id;
+        this.punishmentTypeStr = punishmentTypeStr;
+        this.playerUuid = playerUuid;
+        this.staffUuid = staffUuid;
+        this.length = length;
+        this.timestamp = timestamp;
+        this.reason = reason;
+        this.active = active;
+        this.guiPun = guiPun;
+        this.referencePunId = referencePunId;
+        this.needsNotifSent = needsNotifSent;
+    }
+
     public NPunishmentData() {}
 
     /**
