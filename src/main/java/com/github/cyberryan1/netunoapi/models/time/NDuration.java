@@ -50,7 +50,7 @@ public class NDuration {
      * @return The unformatted length string
      */
     public String asUnformatted() {
-        if ( forever ) { return "forever"; }
+        if ( isForever() ) { return "forever"; }
         long minutes = ( seconds / 60 ) % 60;
         long hours = ( seconds / 3600 ) % 24;
         long days = ( seconds / 86400 ) % 7;
@@ -77,7 +77,7 @@ public class NDuration {
      * @return The formatted length string
      */
     public String asFormatted() {
-        if ( forever ) { return "Forever"; }
+        if ( isForever() ) { return "Forever"; }
         long secs = seconds % 60;
         long minutes = ( seconds / 60 ) % 60;
         long hours = ( seconds / 3600 ) % 24;
@@ -128,7 +128,7 @@ public class NDuration {
      * @return The formatted length string
      */
     public String asFullLength() {
-        if ( forever ) { return "Forever"; }
+        if ( isForever() ) { return "Forever"; }
         long secs = seconds % 60;
         long minutes = ( seconds / 60 ) % 60;
         long hours = ( seconds / 3600 ) % 24;
