@@ -105,7 +105,8 @@ public class NPunishmentData {
      * @return The ID of the punishment that this punishment is a
      * reference to. Should only be set if the punishment is an
      * IP punishment, like an IP ban, IP mute, etc. Otherwise, it
-     * should be -1.
+     * should be -100. If the punishment is the base punishment,
+     * this should be -1.
      */
     public int getReferencePunId() {
         return referencePunId;
@@ -209,7 +210,9 @@ public class NPunishmentData {
      *                        punishment is a reference to. Should
      *                        only be set if the punishment is an
      *                        IP punishment, like an IP ban, IP
-     *                        mute, etc. Otherwise, it should be -1.
+     *                        mute, etc. If this punishment is the
+     *                        original IP punishment, this should be
+     *                        -1. Otherwise, this should be -100.
      */
     public void setReferencePunId( int referencePunId ) {
         this.referencePunId = referencePunId;
