@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class NPunishmentData implements Serializable {
 
     protected int id = -1;
-    protected String punishmentTypeStr = null;
+    protected PunishmentType punishmentType = null;
     protected String playerUuid = null;
     protected String staffUuid = null;
     protected long length = 0;
@@ -18,11 +18,11 @@ public class NPunishmentData implements Serializable {
     protected int referencePunId = -1;
     protected boolean needsNotifSent = false;
 
-    public NPunishmentData( int id, String punishmentTypeStr, String playerUuid, String staffUuid,
+    public NPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid,
                             long length, long timestamp, String reason, boolean active,
                             boolean guiPun, int referencePunId, boolean needsNotifSent ) {
         this.id = id;
-        this.punishmentTypeStr = punishmentTypeStr;
+        this.punishmentType = punishmentType;
         this.playerUuid = playerUuid;
         this.staffUuid = staffUuid;
         this.length = length;
@@ -44,10 +44,10 @@ public class NPunishmentData implements Serializable {
     }
 
     /**
-     * @return The string type of punishment.
+     * @return The type of this punishment.
      */
-    public String getPunishmentTypeStr() {
-        return punishmentTypeStr;
+    public PunishmentType getPunishmentType() {
+        return punishmentType;
     }
 
     /**
@@ -130,10 +130,10 @@ public class NPunishmentData implements Serializable {
     }
 
     /**
-     * @param punishmentTypeStr The type of punishment.
+     * @param punishmentType The type of punishment.
      */
-    public void setPunishmentTypeStr( String punishmentTypeStr ) {
-        this.punishmentTypeStr = punishmentTypeStr;
+    public void setPunishmentType( PunishmentType punishmentType ) {
+        this.punishmentType = punishmentType;
     }
 
     /**
@@ -233,7 +233,7 @@ public class NPunishmentData implements Serializable {
     @Override
     public String toString() {
         return "NetunoPunishmentData{" + "id=" + id +
-                ", punishmentTypeStr=" + punishmentTypeStr +
+                ", punishmentType=" + punishmentType +
                 ", playerUuid=" + playerUuid +
                 ", staffUuid=" + staffUuid +
                 ", length=" + length +
