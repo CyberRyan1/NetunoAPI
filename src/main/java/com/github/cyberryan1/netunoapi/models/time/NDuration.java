@@ -192,6 +192,6 @@ public class NDuration {
      * @return True if the length is forever, false otherwise
      */
     public boolean isForever() {
-        return forever;
+        return forever || seconds == -1;
     }
 }
