@@ -1,25 +1,29 @@
 package com.github.cyberryan1.netunoapi.models.punishments;
 
 public enum PunishmentType {
-    WARN ( true, false,false ),
-    KICK ( true, false, false ),
-    MUTE ( false, false, false ),
-    UNMUTE ( true, true, false ),
-    BAN ( false, false, false ),
-    UNBAN ( true, true, false ),
-    IPMUTE ( false, false, true ),
-    UNIPMUTE ( true, true, true ),
-    IPBAN ( false, false, true ),
-    UNIPBAN ( true, true, true );
+    WARN ( 0, true, false,false ),
+    KICK ( 1, true, false, false ),
+    MUTE ( 2, false, false, false ),
+    UNMUTE ( 3, true, true, false ),
+    BAN ( 4, false, false, false ),
+    UNBAN ( 5, true, true, false ),
+    IPMUTE ( 6, false, false, true ),
+    UNIPMUTE ( 7, true, true, true ),
+    IPBAN ( 8, false, false, true ),
+    UNIPBAN ( 9, true, true, true );
 
-    private boolean hasNoLength;
-    private boolean hasNoReason;
-    private boolean ipPunishment;
-    PunishmentType( boolean hasNoLength, boolean hasNoReason, boolean ipPunishment ) {
+    private final int index;
+    private final boolean hasNoLength;
+    private final boolean hasNoReason;
+    private final boolean ipPunishment;
+    PunishmentType( int index, boolean hasNoLength, boolean hasNoReason, boolean ipPunishment ) {
+        this.index = index;
         this.hasNoLength = hasNoLength;
         this.hasNoReason = hasNoReason;
         this.ipPunishment = ipPunishment;
     }
+
+    public int getIndex() { return index; }
 
     public boolean hasNoLength() {
         return hasNoLength;
@@ -40,6 +44,15 @@ public enum PunishmentType {
     public static PunishmentType fromString( String str ) {
         for ( PunishmentType type : values() ) {
             if ( type.name().equalsIgnoreCase( str ) ) {
+                return type;
+            }
+        }
+        return null;
+    }
+
+    public static PunishmentType fromIndex( int index ) {
+        for ( PunishmentType type : values() ) {
+            if ( type.getIndex() == index ) {
                 return type;
             }
         }
