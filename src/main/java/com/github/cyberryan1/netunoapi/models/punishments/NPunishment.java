@@ -10,6 +10,22 @@ import java.util.UUID;
 
 public class NPunishment extends NPunishmentData {
 
+    public NPunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid,
+                            long length, long timestamp, String reason, boolean active,
+                            boolean guiPun, int referencePunId, boolean needsNotifSent ) {
+        this.id = id;
+        this.punishmentType = punishmentType;
+        this.playerUuid = playerUuid;
+        this.staffUuid = staffUuid;
+        this.length = length;
+        this.timestamp = timestamp;
+        this.reason = reason;
+        this.active = active;
+        this.guiPun = guiPun;
+        this.referencePunId = referencePunId;
+        this.needsNotifSent = needsNotifSent;
+    }
+
     public NPunishment() {}
 
     /**
