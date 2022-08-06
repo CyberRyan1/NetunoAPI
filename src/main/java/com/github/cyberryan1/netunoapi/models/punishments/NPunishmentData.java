@@ -13,7 +13,7 @@ public class NPunishmentData {
     protected String reason = null;
     protected boolean active = false;
     protected boolean guiPun = false;
-    protected int referencePunId = -1;
+    protected int referencePunId = -100;
     protected boolean needsNotifSent = false;
 
     public NPunishmentData( int id, PunishmentType punishmentType, String playerUuid, String staffUuid,
