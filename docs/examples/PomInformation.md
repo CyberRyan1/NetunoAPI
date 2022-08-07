@@ -1,6 +1,8 @@
 
 # NetunoAPI pom.xml Information
 
+---
+
 This is how you would import NetunoAPI into your pom.xml (maven projects).
 
 ```xml
@@ -15,3 +17,7 @@ This is how you would import NetunoAPI into your pom.xml (maven projects).
 As of right now, there is no way to install NetunoAPI via a repository.
 Therefore, for now, you will have to clone this repository and then run
 the maven install command.
+
+---
+
+[Previous Page (!Introduction.md)](!Introduction.md) <<< Current Page (PomInformation.md) >>> [Next Page (MainFileSetupExample.md)](MainFileSetupExample.md)
