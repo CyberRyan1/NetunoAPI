@@ -3,6 +3,7 @@ package com.github.cyberryan1.netunoapi;
 import com.github.cyberryan1.netunoapi.database.DatabaseConnection;
 import com.github.cyberryan1.netunoapi.database.NetunoDatabases;
 import com.github.cyberryan1.netunoapi.models.players.NPlayerLoader;
+import com.github.cyberryan1.netunoapi.models.punishments.NPunishmentLoader;
 
 public interface NetunoApi {
 
@@ -39,4 +40,10 @@ public interface NetunoApi {
      * @return The {@link NPlayerLoader} instance
      */
     NPlayerLoader getPlayerLoader();
+
+    /**
+     * Gets the punishment loader
+     * @return The {@link NPunishmentLoader} instance
+     */
+    NPunishmentLoader getPunishmentLoader();
 }
