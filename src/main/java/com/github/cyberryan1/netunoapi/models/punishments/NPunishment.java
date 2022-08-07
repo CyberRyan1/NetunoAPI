@@ -8,7 +8,19 @@ import org.bukkit.OfflinePlayer;
 
 import java.util.UUID;
 
-public class NPunishment extends NPunishmentData {
+public class NPunishment {
+
+    protected int id = -1;
+    protected PunishmentType punishmentType = null;
+    protected String playerUuid = null;
+    protected String staffUuid = null;
+    protected long length = 0;
+    protected long timestamp = -1;
+    protected String reason = null;
+    protected boolean active = false;
+    protected boolean guiPun = false;
+    protected int referencePunId = -100;
+    protected boolean needsNotifSent = false;
 
     public NPunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid,
                             long length, long timestamp, String reason, boolean active,
@@ -28,15 +40,19 @@ public class NPunishment extends NPunishmentData {
 
     public NPunishment() {}
 
+    //
+    // Main Methods
+    //
+
     /**
      * @return The amount of seconds remaining in the punishment. Returns
      * 0 if the punishment has no length or if the punishment is not active.
      * Returns -1 if the punishment length is permanent.
      */
     public long getSecondsRemaining() {
-        if ( super.punishmentType.hasNoLength() || dataIsActive() == false ) { return 0; }
-        if ( super.length == -1 ) { return -1; }
-        long remain = super.length - ( TimeUtils.getCurrentTimestamp() - super.timestamp );
+        if ( this.punishmentType.hasNoLength() || dataIsActive() == false ) { return 0; }
+        if ( this.length == -1 ) { return -1; }
+        long remain = this.length - ( TimeUtils.getCurrentTimestamp() - this.timestamp );
         if ( remain < 0 ) { return 0; }
         return remain;
     }
@@ -65,22 +81,22 @@ public class NPunishment extends NPunishmentData {
      * @return The length of the punishment as a {@link NDuration} object.
      */
     public NDuration getTimeLength() {
-        if ( super.length == -1 ) { return new NDuration( true ); }
-        return new NDuration( super.length );
+        if ( this.length == -1 ) { return new NDuration( true ); }
+        return new NDuration( this.length );
     }
 
     /**
      * @return The player as an {@link OfflinePlayer}
      */
     public OfflinePlayer getPlayer() {
-        return Bukkit.getOfflinePlayer( UUID.fromString( super.playerUuid ) );
+        return Bukkit.getOfflinePlayer( UUID.fromString( this.playerUuid ) );
     }
 
     /**
      * @return The staff as an {@link OfflinePlayer}
      */
     public OfflinePlayer getStaff() {
-        return Bukkit.getOfflinePlayer( UUID.fromString( super.staffUuid ) );
+        return Bukkit.getOfflinePlayer( UUID.fromString( this.staffUuid ) );
     }
 
     /**
@@ -117,5 +133,221 @@ public class NPunishment extends NPunishmentData {
         clone.setActive( this.active );
         clone.setNeedsNotifSent( this.needsNotifSent );
         return clone;
+    }
+
+    //
+    // Getters & Setters
+    //
+
+    /**
+     * @return The ID of the punishment.
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @return The type of this punishment.
+     */
+    public PunishmentType getPunishmentType() {
+        return punishmentType;
+    }
+
+    /**
+     * @return The UUID of the player who was punished.
+     */
+    public String getPlayerUuid() {
+        return playerUuid;
+    }
+
+    /**
+     * @return The UUID of the staff member who punished the player.
+     * May be "CONSOLE" to represent console punishments.
+     */
+    public String getStaffUuid() {
+        return staffUuid;
+    }
+
+    /**
+     * @return The length of the punishment in seconds. May be -1 to
+     * represent permanent punishments or punishments with no length,
+     * such as warns, kicks, unmutes, etc.
+     */
+    public long getLength() {
+        return length;
+    }
+
+    /**
+     * @return The timestamp of the punishment.
+     */
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    /**
+     * @return The reason for the punishment.
+     */
+    public String getReason() {
+        return reason;
+    }
+
+    /**
+     * @return Whether the punishment is active (true) or not (false)
+     */
+    public boolean dataIsActive() {
+        return active;
+    }
+
+    /**
+     * @return Whether the punishment was executed via the punishment
+     * GUI (true) or not (false)
+     */
+    public boolean isGuiPun() {
+        return guiPun;
+    }
+
+    /**
+     * @return The ID of the punishment that this punishment is a
+     * reference to. Should only be set if the punishment is an
+     * IP punishment, like an IP ban, IP mute, etc. Otherwise, it
+     * should be -100. If the punishment is the base punishment,
+     * this should be -1.
+     */
+    public int getReferencePunId() {
+        return referencePunId;
+    }
+
+    /**
+     * @return Whether the notification has been sent for this
+     * punishment (true) or not (false). Should only be set to true
+     * if the punishment type is a warning.
+     */
+    public boolean needsNotifSent() {
+        return needsNotifSent;
+    }
+
+    /**
+     * @param id The ID of the punishment. Must be greater than 0.
+     */
+    public void setId( int id ) {
+        this.id = id;
+    }
+
+    /**
+     * @param punishmentType The type of punishment.
+     */
+    public void setPunishmentType( PunishmentType punishmentType ) {
+        this.punishmentType = punishmentType;
+    }
+
+    /**
+     * @param playerUuid The UUID of the player who was punished.
+     */
+    public void setPlayerUuid( String playerUuid ) {
+        this.playerUuid = playerUuid;
+    }
+
+    /**
+     * @param player The player who was punished.
+     */
+    public void setPlayer( OfflinePlayer player ) {
+        this.playerUuid = player.getUniqueId().toString();
+    }
+
+    /**
+     * @param staffUuid The UUID of the staff member who punished
+     *                  the player. May be "CONSOLE" to represent
+     *                  console punishments.
+     */
+    public void setStaffUuid( String staffUuid ) {
+        this.staffUuid = staffUuid;
+    }
+
+    /**
+     * @param staff The staff member who punished the player.
+     */
+    public void setStaff( OfflinePlayer staff ) {
+        this.staffUuid = staff.getUniqueId().toString();
+    }
+
+    /**
+     * @param length The length of the punishment in seconds.
+     *               May be -1 to represent permanent punishments
+     *               or punishments with no length, such as warns,
+     *               kicks, unmutes, etc.
+     */
+    public void setLength( long length ) {
+        this.length = length;
+    }
+
+    /**
+     * @param timestamp The timestamp of the punishment.
+     */
+    public void setTimestamp( long timestamp ) {
+        this.timestamp = timestamp;
+    }
+
+    /**
+     * @param reason The reason for the punishment.
+     */
+    public void setReason( String reason ) {
+        this.reason = reason;
+    }
+
+    /**
+     * @param active Whether the punishment is active (true) or
+     *               not (false).
+     */
+    public void setActive( boolean active ) {
+        this.active = active;
+    }
+
+    /**
+     * @param guiPun Whether the punishment was executed via the
+     *              punishment GUI (true) or not (false)
+     */
+    public void setGuiPun( boolean guiPun ) {
+        this.guiPun = guiPun;
+    }
+
+    /**
+     * @param referencePunId The ID of the punishment that this
+     *                        punishment is a reference to. Should
+     *                        only be set if the punishment is an
+     *                        IP punishment, like an IP ban, IP
+     *                        mute, etc. If this punishment is the
+     *                        original IP punishment, this should be
+     *                        -1. Otherwise, this should be -100.
+     */
+    public void setReferencePunId( int referencePunId ) {
+        this.referencePunId = referencePunId;
+    }
+
+    /**
+     * @param needsNotifSent Whether the notification has been sent
+     *                       for this punishment (true) or not
+     *                       (false). Should only be set to true if
+     *                       the punishment type is a warning.
+     */
+    public void setNeedsNotifSent( boolean needsNotifSent ) {
+        this.needsNotifSent = needsNotifSent;
+    }
+
+    /**
+     * I hope this is obvious.
+     */
+    @Override
+    public String toString() {
+        return "NPunishment{" + "id=" + id +
+                ", punishmentType=" + punishmentType +
+                ", playerUuid=" + playerUuid +
+                ", staffUuid=" + staffUuid +
+                ", length=" + length +
+                ", timestamp=" + timestamp +
+                ", reason=" + reason +
+                ", guiPun=" + guiPun +
+                ", referencePunId=" + referencePunId +
+                ", needsNotifSent=" + needsNotifSent +
+                '}';
     }
 }
