@@ -30,7 +30,7 @@ public interface ReportsDatabase {
      * Searches for all reports in the database and in the cache
      * that have the given player has the player. <br>
      * @param player The player to search for
-     * @return A {@link List<NReport>} of all reports for the player
+     * @return A {@link List} of all reports for the player
      */
     List<NReport> getReports( OfflinePlayer player );
 
@@ -38,7 +38,7 @@ public interface ReportsDatabase {
      * Searches for all reports in the database and in the cache
      * that have the given player UUID has the player. <br>
      * @param playerUuid The player UUID to search for
-     * @return A {@link List<NReport>} of all reports for the player
+     * @return A {@link List} of all reports for the player
      */
     List<NReport> getReports( String playerUuid );
 

@@ -14,7 +14,7 @@ public class TimeUtils {
     /**
      * Converts the unformatted length format into seconds,
      * returning it as a {@link NDuration}. <br>
-     * Example: "1h" -> 3600 seconds, "1d" -> 86400 seconds, etc
+     * Example: "1h" = 3600 seconds, "1d" = 86400 seconds, etc
      * @param unformatted The unformatted string to convert
      * @return The length in seconds
      */
@@ -37,7 +37,7 @@ public class TimeUtils {
     /**
      * Converts the formatted length string into seconds,
      * returning it as a {@link NDuration}. <br>
-     * Example: "1 hour" -> 3600, "3 days" -> 259200, etc
+     * Example: "1 hour" = 3600, "3 days" = 259200, etc
      * @param formatted The formatted length string to convert
      * @return The length in seconds
      */

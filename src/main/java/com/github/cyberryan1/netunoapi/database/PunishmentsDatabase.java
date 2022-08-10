@@ -29,7 +29,7 @@ public interface PunishmentsDatabase {
      * be searched. If you want to search just the database, then
      * use the {@link #forceGetPunishments( OfflinePlayer )} method</i>
      * @param player The {@link OfflinePlayer} to search for.
-     * @return A {@link List< NPunishment >} of all punishments for the player.
+     * @return A {@link List} of all punishments for the player.
      */
     List<NPunishment> getPunishments( OfflinePlayer player );
 
@@ -41,7 +41,7 @@ public interface PunishmentsDatabase {
      * be searched. If you want to search just the database, then
      * use the {@link #forceGetPunishments( String )} method</i>
      * @param playerUuid The player UUID to search for.
-     * @return A {@link List< NPunishment >} of all punishments for the player.
+     * @return A {@link List} of all punishments for the player.
      */
     List<NPunishment> getPunishments( String playerUuid );
 
@@ -51,7 +51,7 @@ public interface PunishmentsDatabase {
      * <i>If you want to search the cache first then the database,
      * use the {@link #getPunishments( OfflinePlayer )} method</i>
      * @param player The {@link OfflinePlayer} to search for.
-     * @return A {@link List< NPunishment >} of all punishments for the player.
+     * @return A {@link List} of all punishments for the player.
      */
     List<NPunishment> forceGetPunishments( OfflinePlayer player );
 
@@ -61,7 +61,7 @@ public interface PunishmentsDatabase {
      * <i>If you want to search the cache first then the database,
      * use the {@link #getPunishments( String )} method</i>
      * @param playerUuid The player UUID to search for.
-     * @return A {@link List< NPunishment >} of all punishments for the player.
+     * @return A {@link List} of all punishments for the player.
      */
     List<NPunishment> forceGetPunishments( String playerUuid );
 
@@ -73,7 +73,7 @@ public interface PunishmentsDatabase {
      * be searched. If you want to search just the database, then
      * use the {@link #forceGetPunishmentsFromReference( int )} method</i>
      * @param referenceId The reference ID to search for
-     * @return A {@link List< NPunishment >} of all punishments for the reference ID.
+     * @return A {@link List} of all punishments for the reference ID.
      */
     List<NPunishment> getPunishmentsFromReference( int referenceId );
 
@@ -83,7 +83,7 @@ public interface PunishmentsDatabase {
      * <i>If you want to search the cache first then the database,
      * use the {@link #getPunishmentsFromReference( int )} method</i>
      * @param referenceId The reference ID to search for
-     * @return A {@link List< NPunishment >} of all punishments for the reference ID.
+     * @return A {@link List} of all punishments for the reference ID.
      */
     List<NPunishment> forceGetPunishmentsFromReference( int referenceId );
 

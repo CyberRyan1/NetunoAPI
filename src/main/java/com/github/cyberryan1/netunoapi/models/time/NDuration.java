@@ -46,7 +46,7 @@ public class NDuration {
 
     /**
      * Converts the timestamp length into an unformatted length string. <br>
-     * Example: 3600 -> "1h", 259200 -> "3d", etc
+     * Example: 3600 = "1h", 259200 = "3d", etc
      * @return The unformatted length string
      */
     public String asUnformatted() {
@@ -73,7 +73,7 @@ public class NDuration {
 
     /**
      * Converts the timestamp length into a formatted length string. <br>
-     * Example: 3600 -> "1 hour", 259200 -> "3 days", etc
+     * Example: 3600 = "1 hour", 259200 = "3 days", etc
      * @return The formatted length string
      */
     public String asFormatted() {
@@ -123,8 +123,8 @@ public class NDuration {
 
     /**
      * Converts the timestamp length into a full formatted length string. <br>
-     * Example: 3600 -> "1 hour", 259203 -> "3 days and 3 seconds", "3729" -> "1 hour, 2 minutes, and 9 seconds",
-     * "forever" -> "Forever", "108201" -> "1 day, 6 hours, 3 minutes, and 21 seconds"
+     * Example: 3600 = "1 hour", 259203 = "3 days and 3 seconds", "3729" = "1 hour, 2 minutes, and 9 seconds",
+     * "forever" = "Forever", "108201" = "1 day, 6 hours, 3 minutes, and 21 seconds"
      * @return The formatted length string
      */
     public String asFullLength() {
