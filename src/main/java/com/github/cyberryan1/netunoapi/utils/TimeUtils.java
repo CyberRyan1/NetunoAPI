@@ -22,27 +22,14 @@ public class TimeUtils {
         if ( unformatted.equalsIgnoreCase( "forever" ) ) { return new NDuration( true ); }
         String amount = unformatted.substring( 0, unformatted.length() - 1 );
         char unit = unformatted.charAt( unformatted.length() - 1 );
-        long seconds;
-        switch ( unit ) {
-            case 'w':
-                seconds = Long.parseLong( amount ) * 604800;
-                break;
-            case 'd':
-                seconds = Long.parseLong( amount ) * 86400;
-                break;
-            case 'h':
-                seconds = Long.parseLong( amount ) * 3600;
-                break;
-            case 'm':
-                seconds = Long.parseLong( amount ) * 60;
-                break;
-            case 's':
-                seconds = Long.parseLong( amount );
-                break;
-            default:
-                seconds = -1;
-                break;
-        }
+        long seconds = switch ( unit ) {
+            case 'w' -> Long.parseLong( amount ) * 604800;
+            case 'd' -> Long.parseLong( amount ) * 86400;
+            case 'h' -> Long.parseLong( amount ) * 3600;
+            case 'm' -> Long.parseLong( amount ) * 60;
+            case 's' -> Long.parseLong( amount );
+            default -> -1;
+        };
 
         return new NDuration( seconds );
     }
@@ -61,27 +48,14 @@ public class TimeUtils {
         String unit = split[1];
 
         if ( unit.charAt( unit.length() - 1 ) == 's' ) { unit = unit.substring( 0, unit.length() - 1 ); }
-        long seconds;
-        switch ( unit ) {
-            case "week":
-                seconds = Long.parseLong( amount ) * 604800;
-                break;
-            case "day":
-                seconds = Long.parseLong( amount ) * 86400;
-                break;
-            case "hour":
-                seconds = Long.parseLong( amount ) * 3600;
-                break;
-            case "minute":
-                seconds = Long.parseLong( amount ) * 60;
-                break;
-            case "second":
-                seconds = Long.parseLong( amount );
-                break;
-            default:
-                seconds = -1;
-                break;
-        }
+        long seconds = switch ( unit ) {
+            case "week" -> Long.parseLong( amount ) * 604800;
+            case "day" -> Long.parseLong( amount ) * 86400;
+            case "hour" -> Long.parseLong( amount ) * 3600;
+            case "minute" -> Long.parseLong( amount ) * 60;
+            case "second" -> Long.parseLong( amount );
+            default -> -1;
+        };
 
         return new NDuration( seconds );
     }
