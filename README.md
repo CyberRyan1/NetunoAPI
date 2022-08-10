@@ -57,5 +57,5 @@ You can view the latest release on the [releases page](https://github.com/CyberR
 ## Getting Started
 
 Ready to get started? You can view the first example of NetunoAPI [here](examples/MainFileSetupExample.md), 
-you can view all the examples in the [examples folder](https://github.com/CyberRyan1/NetunoAPI/tree/master/docs/examples), 
+you can view all the examples in the [examples folder](examples), 
 or you can explore the documentation [here](https://cyberryan1.github.io/NetunoAPI/)
