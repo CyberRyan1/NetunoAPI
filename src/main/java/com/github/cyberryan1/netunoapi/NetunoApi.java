@@ -2,6 +2,7 @@ package com.github.cyberryan1.netunoapi;
 
 import com.github.cyberryan1.netunoapi.database.DatabaseConnection;
 import com.github.cyberryan1.netunoapi.database.NetunoDatabases;
+import com.github.cyberryan1.netunoapi.models.alts.NAltLoader;
 import com.github.cyberryan1.netunoapi.models.players.NPlayerLoader;
 import com.github.cyberryan1.netunoapi.models.punishments.NPrePunishment;
 import com.github.cyberryan1.netunoapi.models.punishments.NPunishment;
@@ -35,6 +36,12 @@ public interface NetunoApi {
     default NetunoDatabases getDatabases() {
         return getDatabaseManager();
     }
+
+    /**
+     * Gets the alt loader
+     * @return The {@link NAltLoader} instance
+     */
+    NAltLoader getAltLoader();
 
     /**
      * Gets the player loader
