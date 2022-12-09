@@ -1,7 +1,5 @@
 package com.github.cyberryan1.netunoapi.models.alts;
 
-import org.bukkit.entity.Player;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -15,9 +13,10 @@ public interface NAltLoader {
 
     /**
      * Loads a player into the cache (should only be ran when the player joins).
-     * @param player The player to load
+     * @param uuid The {@link UUID} of the player to load
+     * @param ip The IP of the player to load
      */
-    void loadPlayer( Player player );
+    void loadPlayer( UUID uuid, String ip );
 
     /**
      * Searches for a group with the given ID
