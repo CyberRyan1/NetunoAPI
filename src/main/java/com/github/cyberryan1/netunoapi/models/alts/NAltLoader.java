@@ -23,33 +23,51 @@ public interface NAltLoader {
      * @param groupId The ID of the group to search for
      * @return An optional containing the group if it exists, or an empty optional if it does not
      */
-    Optional<NAltGroup> search( int groupId );
+    Optional<NAltGroup> searchByGroupId( int groupId );
 
     /**
      * Searches for a singular group that contains the given UUID
      * @param uuid The UUID to search for
      * @return An optional containing the group if it exists, or an empty optional if it does not
      */
-    Optional<NAltGroup> search( UUID uuid );
+    Optional<NAltGroup> searchByUuid( UUID uuid );
+
+    /**
+     * Alias for {@link #searchByUuid(UUID)}, but takes a string instead of a UUID
+     * @param uuid The UUID to search for
+     * @return An optional containing the group if it exists, or an empty optional if it does not
+     */
+    default Optional<NAltGroup> searchByUuid( String uuid ) {
+        return searchByUuid( UUID.fromString( uuid ) );
+    }
 
     /**
      * Searches for all groups that contain the given UUID
      * @param uuid the UUID to search for
      * @return A list of all groups that contain the given UUID
      */
-    List<NAltGroup> searchForMany( UUID uuid );
+    List<NAltGroup> searchManyByUuid( UUID uuid );
+
+    /**
+     * Alias for {@link #searchManyByUuid(UUID)}, but takes a string instead of a UUID
+     * @param uuid the UUID to search for
+     * @return A list of all groups that contain the given UUID
+     */
+    default List<NAltGroup> searchManyByUuid( String uuid ) {
+        return searchManyByUuid( UUID.fromString( uuid ) );
+    }
 
     /**
      * Searches for a singular group that contains the given IP address
      * @param ip The IP address to search for
      * @return An optional containing the group if it exists, or an empty optional if it does not
      */
-    Optional<NAltGroup> search( String ip );
+    Optional<NAltGroup> searchByIp( String ip );
 
     /**
      * Searches for all groups that contain the given IP address
      * @param ip The IP address to search for
      * @return A list of all groups that contain the given IP address
      */
-    List<NAltGroup> searchForMany( String ip );
+    List<NAltGroup> searchManyByIp( String ip );
 }
