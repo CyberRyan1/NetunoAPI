@@ -1,52 +1,70 @@
 package com.github.cyberryan1.netunoapi.database;
 
+import com.github.cyberryan1.netunoapi.models.alts.NAltEntry;
 import com.github.cyberryan1.netunoapi.models.alts.NAltGroup;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public interface AltsDatabase {
 
     /**
-     * @return The cache of punishments
+     * Initializes the database
      */
-    List<NAltGroup> getCache();
+    void initialize();
 
     /**
-     * Loads a player's uuid and their current IP into the cache
-     * @param player The player to load
+     * Saves variables needed to the database
      */
-    void loadPlayer( Player player );
+    void save();
 
     /**
-     * Loads a player uuid and their current IP into the cache
-     * @param playerUuid The player uuid
-     * @param playerIp The player ip
+     * Returns a list of IPs addresses that are linked to the given UUID
+     * @param uuid The UUID to search for
+     * @return A list of IPs that are linked to the given UUID
      */
-    void loadPlayer( String playerUuid, String playerIp );
+    List<String> queryIps( String uuid );
 
     /**
-     * Returns a list of UUID strings of all alts a player
-     * has logged in the cache, including their own.
-     * @param player The player to get the alts of
-     * @return The alts of the player
+     * Returns a list of UUIDs that are linked to the given IP address
+     * @param ip The IP address to search for
+     * @return A list of UUIDs that are linked to the given IP address
      */
-    List<String> getAltUuids( OfflinePlayer player );
+    List<UUID> queryUuids( String ip );
 
     /**
-     * Returns a list of {@link OfflinePlayer} objects of all
-     * alts a player has logged in the cache, including themselves.
-     * @param player The player to get the alts of
-     * @return The alts of the player
+     * Returns an alt group of the given ID, provided it exists
+     * @param groupId The ID of the alt group to search for
+     * @return An optional containing the alt group if it exists, or an empty optional if it does not
      */
-    List<OfflinePlayer> getAlts( OfflinePlayer player );
+    Optional<NAltGroup> queryGroup( int groupId );
 
     /**
-     * Returns the {@link NAltGroup} that contains the given
-     * player UUID.
-     * @param playerUuid The player UUID to get the group of
-     * @return The group of the player
+     * @return A list of all entries in the database
      */
-    NAltGroup getAltGroup( String playerUuid );
+    List<NAltEntry> queryAllEntries();
+
+    /**
+     * @param entry An <b>new</b> entry to save to the database
+     */
+    void saveNewEntry( NAltEntry entry );
+
+    /**
+     * Updates the given entry's group ID to the given group ID. The given entry must still
+     * have the old group ID.
+     * @param entry The entry to update
+     * @param newGroupId The new group ID to update the entry to
+     */
+    void updateEntryGroupId( NAltEntry entry, int newGroupId );
+
+    /**
+     * @param entry An entry to remove from the database
+     */
+    void deleteEntry( NAltEntry entry );
+
+    /**
+     * @return The next available group ID
+     */
+    int getNextGroupId();
 }
