@@ -1,106 +1,79 @@
 package com.github.cyberryan1.netunoapi.models.alts;
 
-import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class NAltGroup {
 
     private int groupId = -1;
-    private List<String> altUuids = new ArrayList<>();
-    private List<String> ipList = new ArrayList<>();
+    private List<NAltEntry> entries = new ArrayList<>();
 
-    public NAltGroup( int groupId, List<String> altUuids, List<String> ipList ) {
+    public NAltGroup( int groupId ) {
         this.groupId = groupId;
-        this.altUuids = altUuids;
-        this.ipList = ipList;
     }
 
     public NAltGroup() {}
 
-    //
-    // Main Methods
-    //
-
-    public void addAlt( OfflinePlayer player ) {
-        altUuids.add( player.getUniqueId().toString() );
+    public void addEntry( NAltEntry entry ) {
+        entries.add( entry );
     }
 
-    public void addAlt( String playerUuid ) {
-        altUuids.add( playerUuid );
+    public boolean containsEntry( NAltEntry search ) {
+        for ( NAltEntry entry : entries ) {
+            if ( entry.getUuid().equals( search.getUuid() ) && entry.getIp().equals( search.getIp() ) ) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public boolean containsAlt( OfflinePlayer player ) {
-        return altUuids.contains( player.getUniqueId().toString() );
+    public void removeEntry( NAltEntry entry ) {
+        entries.remove( entry );
     }
 
-    public boolean containsAlt( String playerUuid ) {
-        return altUuids.contains( playerUuid );
+    public List<NAltEntry> getEntries() {
+        return entries;
     }
 
-    public void removeAlt( OfflinePlayer player ) {
-        altUuids.remove( player.getUniqueId().toString() );
+    public List<UUID> getUuids() {
+        return entries.stream()
+                .map( entry -> UUID.fromString( entry.getUuid() ) )
+                .distinct()
+                .collect( Collectors.toList() );
     }
 
-    public void removeAlt( String playerUuid ) {
-        altUuids.remove( playerUuid );
+    public List<String> getIps() {
+        return entries.stream()
+                .map( NAltEntry::getIp )
+                .distinct()
+                .collect( Collectors.toList() );
     }
-
-    public List<OfflinePlayer> getAlts() {
-        return altUuids.stream()
-                .map( uuid -> Bukkit.getOfflinePlayer( UUID.fromString( uuid ) ) )
-                .collect( ArrayList::new, ArrayList::add, ArrayList::addAll );
-    }
-
-    public void addIp( String ip ) {
-        ipList.add( ip );
-    }
-
-    public boolean containsIp( String ip ) {
-        return ipList.contains( ip );
-    }
-
-    public void removeIp( String ip ) {
-        ipList.remove( ip );
-    }
-
-    //
-    // Getters & Setters
-    //
 
     public int getGroupId() {
         return groupId;
-    }
-
-    public List<String> getAltUuids() {
-        return altUuids;
-    }
-
-    public List<String> getIpList() {
-        return ipList;
     }
 
     public void setGroupId( int groupId ) {
         this.groupId = groupId;
     }
 
-    public void setAltUuids( List<String> altUuids ) {
-        this.altUuids = altUuids;
-    }
+    @Override
+    public boolean equals( Object o ) {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
 
-    public void setIpList( List<String> ipList ) {
-        this.ipList = ipList;
+        NAltGroup that = ( NAltGroup ) o;
+
+        if ( getGroupId() != that.getGroupId() ) return false;
+        return getEntries() != null ? getEntries().equals( that.getEntries() ) : that.getEntries() == null;
     }
 
     @Override
-    public String toString() {
-        return "NAltGroup{" +
-                "groupId=" + groupId +
-                ", altUuids=" + altUuids +
-                ", ipList=" + ipList +
-                '}';
+    public int hashCode() {
+        int result = getGroupId();
+        result = 31 * result + ( getEntries() != null ? getEntries().hashCode() : 0 );
+        return result;
     }
 }
