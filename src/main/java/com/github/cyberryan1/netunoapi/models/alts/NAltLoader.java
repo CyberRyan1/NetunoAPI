@@ -12,6 +12,11 @@ public interface NAltLoader {
     void initialize();
 
     /**
+     * Saves everything to the database as needed
+     */
+    void save();
+
+    /**
      * Loads a player into the cache (should only be ran when the player joins).
      * @param uuid The {@link UUID} of the player to load
      * @param ip The IP of the player to load
