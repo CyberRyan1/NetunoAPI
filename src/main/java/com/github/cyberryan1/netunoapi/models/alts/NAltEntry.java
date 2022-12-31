@@ -6,17 +6,21 @@ public class NAltEntry {
     private final String uuid;
     private final String ip;
     private int groupId;
+    private boolean saved;
 
-    public NAltEntry( String uuid, String ip, int groupId ) {
+    public NAltEntry( String uuid, String ip, int groupId, boolean saved ) {
         this.uuid = uuid;
         this.ip = ip;
         this.groupId = groupId;
+        this.saved = saved;
+    }
+
+    public NAltEntry( String uuid, String ip, int groupId ) {
+        this( uuid, ip, groupId, true );
     }
 
     public NAltEntry( UUID uuid, String ip, int groupId ) {
-        this.uuid = uuid.toString();
-        this.ip = ip;
-        this.groupId = groupId;
+        this( uuid.toString(), ip, groupId, true );
     }
 
     public String getUuid() {
@@ -33,6 +37,14 @@ public class NAltEntry {
 
     public void setGroupId( int groupId ) {
         this.groupId = groupId;
+    }
+
+    public boolean isSaved() {
+        return saved;
+    }
+
+    public void setSaved( boolean saved ) {
+        this.saved = saved;
     }
 
     public NAltEntry copy() {
