@@ -45,7 +45,7 @@ public interface AltsDatabase {
      * @param uuid The UUID to search for
      * @return An optional containing the alt group if it exists, or an empty optional if it does not
      */
-    Optional<NAltGroup> queryGroupByUuid( String uuid );
+    Optional<NAltGroup> queryGroupByUuid( UUID uuid );
 
     /**
      * Returns an alt group of the given IP, provided it exists
