@@ -38,7 +38,21 @@ public interface AltsDatabase {
      * @param groupId The ID of the alt group to search for
      * @return An optional containing the alt group if it exists, or an empty optional if it does not
      */
-    Optional<NAltGroup> queryGroup( int groupId );
+    Optional<NAltGroup> queryGroupById( int groupId );
+
+    /**
+     * Returns an alt group of the given UUID, provided it exists
+     * @param uuid The UUID to search for
+     * @return An optional containing the alt group if it exists, or an empty optional if it does not
+     */
+    Optional<NAltGroup> queryGroupByUuid( String uuid );
+
+    /**
+     * Returns an alt group of the given IP, provided it exists
+     * @param ip The IP to search for
+     * @return An optional containing the alt group if it exists, or an empty optional if it does not
+     */
+    Optional<NAltGroup> queryGroupByIp( String ip );
 
     /**
      * @return A list of all entries in the database
