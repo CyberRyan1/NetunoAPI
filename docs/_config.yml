@@ -10,10 +10,14 @@ description: >- # this means to ignore newlines until "baseurl:"
 #github_username:  jekyll
 
 # Build settings
-remote_theme: just-the-docs
+markdown: kramdown
 plugins:
-  - jekyll-feed
+  - jekyll-remote-theme
+  - jekyll-analytics
   - jekyll-default-layout
+
+remote_theme: just-the-docs/just-the-docs
+search_enabled: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
