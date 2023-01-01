@@ -17,5 +17,4 @@ plugins:
   - jekyll-default-layout
 
 remote_theme: just-the-docs/just-the-docs
-search_enabled: true
 color_scheme: dark
