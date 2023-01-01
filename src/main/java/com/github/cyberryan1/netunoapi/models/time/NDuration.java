@@ -77,37 +77,58 @@ public class NDuration {
      * @return The formatted length string
      */
     public String asFormatted() {
+        return asFormatted( -1 );
+    }
+
+    /**
+     * Converts the timestamp length into a formatted length string. <br>
+     * Example: 3600 = "1 hour", 259200 = "3 days", etc
+     * @param limit The maximum number of units to include in the string (set to -1 for no limit)
+     * @return The formatted length string
+     */
+    public String asFormatted( int limit ) {
         if ( isForever() ) { return "Forever"; }
         long secs = seconds % 60;
         long minutes = ( seconds / 60 ) % 60;
         long hours = ( seconds / 3600 ) % 24;
         long days = ( seconds / 86400 ) % 7;
         long weeks = ( seconds / 604800 );
+        int count = 0;
 
         String toReturn = "";
         if ( weeks > 0 ) {
             toReturn += weeks + " week";
             if ( weeks > 1 ) { toReturn += "s"; }
+            count++;
+            if ( limit > 0 && count >= limit ) { return toReturn; }
         }
         if ( days > 0 ) {
             if ( toReturn.isEmpty() == false ) { toReturn += " "; }
             toReturn += days + " day";
             if ( days > 1 ) { toReturn += "s"; }
+            count++;
+            if ( limit > 0 && count >= limit ) { return toReturn; }
         }
         if ( hours > 0 ) {
             if ( toReturn.isEmpty() == false ) { toReturn += " "; }
             toReturn += hours + " hour";
             if ( hours > 1 ) { toReturn += "s"; }
+            count++;
+            if ( limit > 0 && count >= limit ) { return toReturn; }
         }
         if ( minutes > 0 ) {
             if ( toReturn.isEmpty() == false ) { toReturn += " "; }
             toReturn += minutes + " minute";
             if ( minutes > 1 ) { toReturn += "s"; }
+            count++;
+            if ( limit > 0 && count >= limit ) { return toReturn; }
         }
         if ( secs > 0 ) {
             if ( toReturn.isEmpty() == false ) { toReturn += " "; }
             toReturn += secs + " second";
             if ( secs > 1 ) { toReturn += "s"; }
+            count++;
+            if ( limit > 0 && count >= limit ) { return toReturn; }
         }
 
         return toReturn;
@@ -125,9 +146,10 @@ public class NDuration {
      * Converts the timestamp length into a full formatted length string. <br>
      * Example: 3600 = "1 hour", 259203 = "3 days and 3 seconds", "3729" = "1 hour, 2 minutes, and 9 seconds",
      * "forever" = "Forever", "108201" = "1 day, 6 hours, 3 minutes, and 21 seconds"
+     * @param limit The maximum number of units to include in the string (set to -1 for no limit)
      * @return The formatted length string
      */
-    public String asFullLength() {
+    public String asFullLength( int limit ) {
         if ( isForever() ) { return "Forever"; }
         long secs = seconds % 60;
         long minutes = ( seconds / 60 ) % 60;
@@ -166,18 +188,39 @@ public class NDuration {
             elements.add( e );
         }
 
-        if ( elements.size() == 0 ) { return "0 seconds"; }
-        else if ( elements.size() == 1 ) { return elements.get( 0 ); }
-        else if ( elements.size() == 2 ) { return elements.get( 0 ) + " and " + elements.get( 1 ); }
+        final List<String> finalElements = new ArrayList<>();
+        if ( limit > 0 ) {
+            for ( int i = 0; i < limit; i++ ) {
+                if ( i >= elements.size() ) { break; }
+                finalElements.add( elements.get( i ) );
+            }
+        }
+        else {
+            finalElements.addAll( elements );
+        }
+
+        if ( finalElements.size() == 0 ) { return "0 seconds"; }
+        else if ( finalElements.size() == 1 ) { return finalElements.get( 0 ); }
+        else if ( finalElements.size() == 2 ) { return finalElements.get( 0 ) + " and " + finalElements.get( 1 ); }
         else {
             String toReturn = "";
-            for ( int i = 0; i < elements.size(); i++ ) {
-                if ( i == elements.size() - 1 ) { toReturn += " and "; }
+            for ( int i = 0; i < finalElements.size(); i++ ) {
+                if ( i == finalElements.size() - 1 ) { toReturn += " and "; }
                 else if ( i > 0 ) { toReturn += ", "; }
-                toReturn += elements.get( i );
+                toReturn += finalElements.get( i );
             }
             return toReturn;
         }
+    }
+
+    /**
+     * Converts the timestamp length into a full formatted length string. <br>
+     * Example: 3600 = "1 hour", 259203 = "3 days and 3 seconds", "3729" = "1 hour, 2 minutes, and 9 seconds",
+     * "forever" = "Forever", "108201" = "1 day, 6 hours, 3 minutes, and 21 seconds"
+     * @return The formatted length string
+     */
+    public String asFullLength() {
+        return asFullLength( -1 );
     }
 
     /**
