@@ -18,6 +18,7 @@ plugins:
 
 remote_theme: just-the-docs/just-the-docs
 search_enabled: true
+color_scheme: dark
 
 # Exclude from processing.
 # The following items will not be processed, by default.
