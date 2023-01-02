@@ -27,12 +27,7 @@ public class MainPlugin extends JavaPlugin {
         // Now the Netuno API is accessible to any class 
         //      via the MainPlugin.netunoApi reference.
     }
-    
 }
-
 ```
 
 ---
-
-[Previous Page (README.md)](https://github.com/CyberRyan1/NetunoAPI#readme) 
-<<< --- >>> [Next Page (PunishmentExample.md)](PunishmentExample.md)
