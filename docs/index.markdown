@@ -12,6 +12,6 @@ punish players, deal with reports, and manage chat in a more simple and effectiv
 be found on its [Spigot Page](https://www.spigotmc.org/resources/netuno.94864/) or on its [GitHub](https://github.com/CyberRyan1/Netuno). 
 If you want to contribute to NetunoAPI, look at its [GitHub](https://github.com/CyberRyan1/NetunoAPI). <br>
 
-Ready to start using NetunoAPI? Learn how to set it up [here](https://www.google.com).
+Ready to start using NetunoAPI? Learn how to set it up [here](https://cyberryan1.github.io/NetunoAPI/setup/).
 
 ----
