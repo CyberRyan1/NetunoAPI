@@ -16,4 +16,4 @@ Ready to start using NetunoAPI? Learn how to set it up [here](https://www.google
 
 ----
 
-[GitHub](https://github.com/CyberRyan1/NetunoAPI) | [Spigot](https://www.spigotmc.org/resources/netuno.94864/) | [Discord](https://discord.gg/8gxG4KfvBK)
+[GitHub](https://github.com/CyberRyan1/NetunoAPI) \| [Spigot](https://www.spigotmc.org/resources/netuno.94864/) \| [Discord](https://discord.gg/8gxG4KfvBK)
