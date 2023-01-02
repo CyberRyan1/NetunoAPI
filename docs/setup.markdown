@@ -16,7 +16,7 @@ Remember to replace LATEST_VERSION with the latest version of the Netuno API. Yo
 on the [releases page](https://github.com/CyberRyan1/NetunoAPI/releases).
 
 ## Maven
-If you are using Maven, then add this to your `pom.xml`
+If you are using Maven, this to your `pom.xml`
 
 ```xml
 <!-- Repository -->
@@ -40,6 +40,8 @@ If you are using Maven, then add this to your `pom.xml`
 ```
 
 ## Gradle
+If you are using Gradle, add this to your `build.gradle`
+
 ```groovy
 // Repository
 repositories {
