@@ -17,7 +17,8 @@ remote_theme: just-the-docs/just-the-docs
 color_scheme: dark
 
 # Callouts
-callouts_level: quiet
+callouts_level: loud
+callouts_opacity: 0.2 # 0.2 is default
 callouts:
   important:
     title: Important
