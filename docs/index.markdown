@@ -4,7 +4,7 @@ layout: home
 nav_order: 1
 ---
 
-## NetunoAPI
+# NetunoAPI
 [![](https://jitpack.io/v/CyberRyan1/NetunoAPI.svg)](https://jitpack.io/#CyberRyan1/NetunoAPI)
 
 NetunoAPI is the API for the [Netuno](https://www.spigotmc.org/resources/netuno.94864/) plugin. Netuno enables staff to
