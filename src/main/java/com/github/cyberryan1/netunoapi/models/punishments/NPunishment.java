@@ -19,7 +19,7 @@ public class NPunishment {
     private String reason = null;
     private boolean active = false;
     private boolean guiPun = false;
-    private int referencePunId = -100;
+    private int referencePunId = -1;
     private boolean needsNotifSent = false;
 
     public NPunishment( int id, PunishmentType punishmentType, String playerUuid, String staffUuid,
