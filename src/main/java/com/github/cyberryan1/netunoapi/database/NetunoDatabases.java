@@ -5,15 +5,17 @@ package com.github.cyberryan1.netunoapi.database;
  */
 public interface NetunoDatabases {
     
-    /**
-     * @return The {@link AltsDatabase} instance
-     */
-    AltsDatabase getAltsDatabase();
+//    /**
+//     * @return The {@link AltsDatabase} instance
+//     */
+//    AltsDatabase getAltsDatabase();
 
-    /**
-     * @return The {@link AltsDatabase} instance
-     */
-    AltsDatabase getAlts();
+//    /**
+//     * @return The {@link AltsDatabase} instance
+//     */
+//    AltsDatabase getAlts();
+
+    TempAltsDatabase getTempAltsDatabase();
 
     /**
      * @return The {@link PunishmentsDatabase} instance
