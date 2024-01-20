@@ -2,6 +2,7 @@ package com.github.cyberryan1.netunoapi;
 
 import com.github.cyberryan1.netunoapi.database.DatabaseConnection;
 import com.github.cyberryan1.netunoapi.database.NetunoDatabases;
+import com.github.cyberryan1.netunoapi.events.NetunoEventDispatcher;
 import com.github.cyberryan1.netunoapi.models.alts.TempAltCache;
 import com.github.cyberryan1.netunoapi.models.players.NPlayerLoader;
 import com.github.cyberryan1.netunoapi.models.punishments.NPrePunishment;
@@ -57,4 +58,9 @@ public interface NetunoApi {
      * @return The {@link NPrePunishment} for the given punishment
      */
     NPrePunishment getPrePunishment( NPunishment punishment );
+
+    /**
+     * @return Gets the event dispatcher
+     */
+    NetunoEventDispatcher getEventDispatcher();
 }

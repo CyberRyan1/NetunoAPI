@@ -1,0 +1,34 @@
+title: NetunoAPI
+#email: your-email@example.com
+description: >- 
+#baseurl: "" # the subpath of your site, e.g. /blog
+#url: "" # the base hostname & protocol for your site, e.g. http://example.com
+#twitter_username: jekyllrb
+#github_username:  jekyll
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-remote-theme
+  - jekyll-analytics
+  - jekyll-default-layout
+
+remote_theme: just-the-docs/just-the-docs
+color_scheme: dark
+
+# Callouts
+callouts_level: loud
+callouts_opacity: 0.2 # 0.2 is default
+callouts:
+  important:
+    title: Important
+    color: green
+  new:
+    title: New
+    color: blue
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: red

@@ -111,3 +111,10 @@ buildNumber.properties
 
 # Common working directory
 run/
+
+# Jekyll
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
