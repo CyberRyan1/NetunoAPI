@@ -1,8 +1,9 @@
 package com.github.cyberryan1.netunoapi.database;
 
 import com.github.cyberryan1.netunoapi.models.alts.TempAltGroup;
+import com.github.cyberryan1.netunoapi.models.alts.TempIpEntry;
 
-import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 public interface TempAltsDatabase {
@@ -24,35 +25,30 @@ public interface TempAltsDatabase {
     void save();
 
     /**
-     * Saves a certain {@link TempAltGroup}
+     * Saves a certain {@link TempIpEntry}
      * group to the database
      */
-    void save( TempAltGroup group );
+    void save( TempIpEntry group );
 
     /**
-     * Queries for a {@link TempAltGroup} that contains the given
-     * UUID. Returns an empty optional if not found.
+     * Queries for a Set of {@link TempIpEntry} that contains the given
+     * UUID. Returns an empty set if none found.
      * @param uuid The UUID to query by
-     * @return An optional containing the alt group if it exists, empty otherwise
+     * @return A set containing the alt entries if they exist, empty otherwise
      */
-    Optional<TempAltGroup> queryByUuid( UUID uuid );
+    Set<TempIpEntry> queryByUuid( UUID uuid );
 
     /**
-     * Queries for a {@link TempAltGroup} that contains the given
-     * IP. Returns an empty optional if not found.
+     * Queries for a Set of {@link TempIpEntry} that contains the given
+     * IP. Returns an empty set if none found.
      * @param ip The IP to query by
-     * @return An optional containing the alt group if it exists, empty otherwise
+     * @return A set containing the alt entries if they exist, empty otherwise
      */
-    Optional<TempAltGroup> queryByIp( String ip );
+    Set<TempAltGroup> queryByIp( String ip );
 
     /**
-     * @param group a group to remove from the database
+     * @param entry an entry to remove from the database
      */
-    void deleteGroup( TempAltGroup group );
-
-    /**
-     * @return The next available group ID
-     */
-    int getNextGroupId();
+    void deleteGroup( TempIpEntry entry );
 
 }
