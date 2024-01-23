@@ -1,16 +1,15 @@
 package com.github.cyberryan1.netunoapi.models.alts;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
-public class TempIpEntry {
+public class TempUuidIpEntry {
 
-    private final Set<UUID> uuids = new HashSet<>();
+    private final UUID uuid;
     private final String ip;
     private boolean saved;
 
-    public TempIpEntry( String ip, boolean saved ) {
+    public TempUuidIpEntry( UUID uuid, String ip, boolean saved ) {
+        this.uuid = uuid;
         this.ip = ip;
         this.saved = saved;
     }
@@ -19,8 +18,8 @@ public class TempIpEntry {
 
     public void setSaved( boolean saved ) { this.saved = saved; }
 
-    public Set<UUID> getUuids() {
-        return uuids;
+    public UUID getUuid() {
+        return uuid;
     }
 
     public String getIp() {

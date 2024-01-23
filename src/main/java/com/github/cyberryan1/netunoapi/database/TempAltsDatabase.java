@@ -1,9 +1,8 @@
 package com.github.cyberryan1.netunoapi.database;
 
-import com.github.cyberryan1.netunoapi.models.alts.TempAltGroup;
-import com.github.cyberryan1.netunoapi.models.alts.TempIpEntry;
+import com.github.cyberryan1.netunoapi.models.alts.TempUuidIpEntry;
 
-import java.util.Set;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface TempAltsDatabase {
@@ -20,35 +19,30 @@ public interface TempAltsDatabase {
     void shutdown();
 
     /**
-     * Saves all edited info the database
-     */
-    void save();
-
-    /**
-     * Saves a certain {@link TempIpEntry}
+     * Saves a certain {@link TempUuidIpEntry}
      * group to the database
      */
-    void save( TempIpEntry group );
+    void save( TempUuidIpEntry entry );
 
     /**
-     * Queries for a Set of {@link TempIpEntry} that contains the given
-     * UUID. Returns an empty set if none found.
+     * Queries for a {@link TempUuidIpEntry} that contains the given
+     * UUID. Returns an empty optional if none found.
      * @param uuid The UUID to query by
-     * @return A set containing the alt entries if they exist, empty otherwise
+     * @return An optional containing the alt entries if they exist, empty otherwise
      */
-    Set<TempIpEntry> queryByUuid( UUID uuid );
+    Optional<TempUuidIpEntry> queryByUuid( UUID uuid );
 
     /**
-     * Queries for a Set of {@link TempIpEntry} that contains the given
-     * IP. Returns an empty set if none found.
+     * Queries for a {@link TempUuidIpEntry} that contains the given
+     * IP. Returns an empty optional if none found.
      * @param ip The IP to query by
-     * @return A set containing the alt entries if they exist, empty otherwise
+     * @return An optional containing the alt entries if they exist, empty otherwise
      */
-    Set<TempAltGroup> queryByIp( String ip );
+    Optional<TempUuidIpEntry> queryByIp( String ip );
 
     /**
      * @param entry an entry to remove from the database
      */
-    void deleteGroup( TempIpEntry entry );
+    void deleteEntry( TempUuidIpEntry entry );
 
 }
