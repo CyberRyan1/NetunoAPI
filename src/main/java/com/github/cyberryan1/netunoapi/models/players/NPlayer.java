@@ -1,10 +1,11 @@
 package com.github.cyberryan1.netunoapi.models.players;
 
-//import com.github.cyberryan1.netunoapi.models.alts.NAltGroup;
 import com.github.cyberryan1.netunoapi.models.punishments.NPunishment;
 import org.bukkit.OfflinePlayer;
 
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 public interface NPlayer {
 
@@ -23,10 +24,8 @@ public interface NPlayer {
      */
     void updatePunishments();
 
-//    /**
-//     * @return The {@link NAltGroup} this player belongs to.
-//     * Will return null if the player hasn't joined the server
-//     * before or if their alt group cannot be found.
-//     */
-//    NAltGroup getAltGroup();
+    /**
+     * @return All alt accounts of this player
+     */
+    Set<UUID> getAltAccounts();
 }

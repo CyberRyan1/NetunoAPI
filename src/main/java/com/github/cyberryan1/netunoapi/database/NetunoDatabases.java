@@ -4,18 +4,11 @@ package com.github.cyberryan1.netunoapi.database;
  * This class is used to manage all the different database instance classes.
  */
 public interface NetunoDatabases {
-    
-//    /**
-//     * @return The {@link AltsDatabase} instance
-//     */
-//    AltsDatabase getAltsDatabase();
 
-//    /**
-//     * @return The {@link AltsDatabase} instance
-//     */
-//    AltsDatabase getAlts();
-
-    TempAltsDatabase getTempAltsDatabase();
+    /**
+     * @return The {@link IpHistoryDatabase} instance
+     */
+    IpHistoryDatabase getIpHistoryDatabase();
 
     /**
      * @return The {@link PunishmentsDatabase} instance
